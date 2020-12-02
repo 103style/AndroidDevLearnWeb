@@ -1,0 +1,47 @@
+/* 首页独特样式  or  页面特有的样式 */
+
+.nav {
+    height: 30px;
+    background: #e3e4e5;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-box {
+    width: 1190px;
+    text-align: right;
+}
+
+.nav-box ul li {
+    display: inline-block;
+    padding: 0px 10px;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+}
+
+.nav-box ul li a {
+    color: #999999;
+    text-decoration: none;
+}
+
+
+/*  导航栏 各个item中间的分割线  */
+
+.nav-box ul li:not(:last-child):after {
+    content: "";
+    width: 1px;
+    height: 14px;
+    background: #ccc;
+    position: absolute;
+    top: 8px;
+    right: 0px;
+    display: block;
+}
+
+
+/* 手表移动到当前位置显示的样式 */
+
+.nav-box ul li a:hover {
+    color: red;
+}
