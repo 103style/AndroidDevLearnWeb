@@ -1,1 +1,4 @@
-(()=>{"use strict";alert("fast-cache")})();
+(() => {
+    "use strict";
+    alert("fast-cache")
+})();
