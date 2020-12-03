@@ -7,3 +7,10 @@ li {
     margin: 0px;
     padding: 0px;
 }
+
+
+/* 去掉无序列表前的小圆点 */
+
+li {
+    list-style: none;
+}

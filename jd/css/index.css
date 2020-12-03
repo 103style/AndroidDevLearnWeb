@@ -45,3 +45,92 @@
 .nav-box ul li a:hover {
     color: red;
 }
+
+.header-box {
+    height: 140px;
+    background-color: white;
+}
+
+.header {
+    width: 1190px;
+    display: flex;
+    margin: 0px;
+    padding: 10px;
+}
+
+.header .logo-box {
+    width: 190px;
+    height: 120px;
+}
+
+.header .search-box {
+    width: 790px;
+    padding: 0px 10px;
+}
+
+.header .search-bar {
+    padding: 15px 0px 0px 50px;
+    display: flex;
+}
+
+.search-bar input {
+    border: 1px solid #e1251b;
+    width: 500px;
+    height: 30px;
+    padding: 2px 10px;
+    /* 去掉默认的内边线 */
+    outline: none;
+}
+
+.search-bar .search-btn {
+    width: 58px;
+    height: 34px;
+    border: 1px solid #e1251b;
+    background: #e1251b;
+    /* 鼠标移上去变成小手 */
+    cursor: pointer;
+    text-align: center;
+    line-height: 34px;
+}
+
+.search-bar .iconfont-search {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.search-bar .cart-btn {
+    margin: 0px 0px 0px 20px;
+    border: 1px solid #e1251b;
+    height: 34px;
+    width: 100px;
+    line-height: 34px;
+    text-align: center;
+    color: #e1251b;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.search-bar .iconfont-cart {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.header .recommend {
+    font-size: 12px;
+    padding: 5px 0px 20px 50px;
+}
+
+.header .recommend a {
+    color: #999999;
+}
+
+.search-box ul li {
+    display: inline-block;
+    padding: 0px 10px;
+}
+
+.search-box ul li a {
+    color: #333333;
+    text-decoration: none;
+}
