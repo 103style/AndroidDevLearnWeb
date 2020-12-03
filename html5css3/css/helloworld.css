@@ -1,0 +1,35 @@
+header,
+footer {
+    font-size: 16px;
+    text-align: center;
+    color: tomato;
+}
+
+
+/* .类选器名称{css样式代码;} */
+
+h2.test {
+    font-size: 16px;
+    color: #930;
+    text-align: center;
+}
+
+
+/* class 为 test 的 p 标签样式 */
+
+p.test {
+    font-size: 14px;
+    color: red;
+    text-align: center;
+}
+
+div.potry {
+    font-size: 16px;
+    color: #e68211;
+    margin-left: 30px;
+}
+
+table.csstest {
+    border: violet;
+    text-align: center;
+}

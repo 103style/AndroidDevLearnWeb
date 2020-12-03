@@ -1,0 +1,159 @@
+<!-- 使用 html:5  一键生成默认代码 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- 设置当前文件字符编码 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/helloworld.css">
+
+    <!-- css样式 -->
+    <style type="text/css">
+        h1 {
+            font-size: 18px;
+            color: #930;
+            text-align: center;
+        }
+        
+        span {
+            color: blue;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header> 头部标签 header</header>
+
+    <h1>Hello World! 一级标题h1</h1>
+
+    <h2 class="test">二级标题 H2 css样式测试 </h2>
+
+    <h3>三级标题h3</h3>
+    <h4>四级标题h4</h4>
+    <h5>五级标题h5</h5>
+    <h6>六级标题h6</h6>
+
+    <hr/>
+
+    <p class="test">段落标签p css样式测试</p>
+    <p class="test"><span> span自定义样式</span></p>
+    <p class="test">水平分割线 hr</p>
+    <hr />
+
+    <div class="potry">
+        <p>狱中题壁</p>
+        <p>作者：谭嗣同</p>
+        <p>望门投止思张俭，<br />忍死须臾待杜根；<br />我自横刀向天笑，<br />去留肝胆两昆仑。<br /></p>
+        <p>br标签 换行</p>
+    </div>
+
+    <hr />
+
+    <section>区域标签 section </section>
+
+    <aside>侧边栏标签 aside</aside>
+
+    <hr />
+
+    <ul>
+        <!-- li*4 快捷生成4个li -->
+        <li>无序列表信息标签 ul</li>
+        <li>无序列表信息标签 ul</li>
+        <li>无序列表信息标签 ul</li>
+        <li>无序列表信息标签 ul</li>
+    </ul>
+
+    <hr />
+
+    <ol>
+        <li>有序列表信息标签 ol</li>
+        <li>有序列表信息标签 ol</li>
+        <li>有序列表信息标签 ol</li>
+        <li>有序列表信息标签 ol</li>
+    </ol>
+
+    <hr />
+
+    <p>图片标签 img</p>
+    <img title="img 标签 title" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1709644436,2739756540&fm=26&gp=0.jpg" alt="图片加载失败的提示">
+
+    <p>链接标签 a </p>
+    <a href="https://www.baidu.com">百度一下, 默认 target="_self",直接在当前窗口打开</a>
+    <br>
+    <a href="https://www.jd.com" target="_blank"> 添加 target="_blank",在新的窗口打开 京东</a>
+
+    <hr />
+
+    <div>
+        <p> 表格标签 <br>table:整个表格, caption:表格标题 <br> tr:行, th:头部的一个单元格, td:一个单元格, border:边框</p>
+
+        <table class="csstest" border="1px">
+            <caption>表格标题caption标签</caption>
+            <tr>
+                <th>知识点</th>
+                <th>重要程度</th>
+                <th>难度</th>
+            </tr>
+            <tr>
+                <td>html</td>
+                <td>5</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>css</td>
+                <td>5</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>js</td>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+        </table>
+    </div>
+
+    <hr />
+
+    <p> thead 标签定义表格的表头 </p>
+    <p> tbody 如果不加 thead tbody tfooter, table表格加载完后才显示。<br> 加上这些表格结构， tbody包含行的内容下载完优先显示，不必等待表格结束后在显示，同时如果表格很长，用tbody分段，可以一部分一部分地显示。<br>通俗理解table 可以按结构一块块的显示，不在等整个表格加载完后显示。</p>
+    <p> tfoot 元素用于对 HTML 表格中的表注（页脚）内容进行分组。 </p>
+    <p> thead、tfoot 以及 tbody 元素使您有能力对表格中的行进行分组。当您创建某个表格时，您也许希望拥有一个标题行，一些带有数据的行，以及位于底部的一个总计行。这种划分使浏览器有能力支持独立于表格标题和页脚的表格正文滚动。当长的表格被打印时，表格的表头和页脚可被打印在包含表格数据的每张页面上。</p>
+
+    <p>在原来表格的基础上给每个 tr 加上 thead 或者 tbody 或者 tfoot</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>科目</th>
+                <th>分数</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>语文</td>
+                <td>99</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td>数学</td>
+                <td>60</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>总分</td>
+                <td>159</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <hr />
+
+    <footer>底部标签 footer</footer>
+
+</body>
+
+</html>

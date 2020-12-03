@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form表单相关</title>
+    <style type="text/css">
+        h1 {
+            text-align: center;
+        }
+        
+        p {
+            color: crimson;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>form表单相关</h1>
+
+    <form action="" method="post">
+        <p>input type="text" 则是明文输入</p>
+        <p>input type="password" 则是密码输入</p>
+        <label for="username">用&nbsp;户&nbsp;名:</label>
+        <input type="text" name="username" />
+        <p />
+        <label for="pass">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
+        <input type="password" name="password">
+        <p />
+        <input type="submit" value="确 定" name="submit" /> &nbsp;&nbsp;
+        <input type="reset" value="重 置" name="reset" />
+    </form>
+
+    <hr />
+
+    <form action="" method="get">
+        <p>placeholder属性 设置提示文字</p>
+        <input type="text" name="id" placeholder="请输入">
+
+        <p>type = number 表示只能输入数字</p>
+        <input type="number" placeholder="0">
+
+
+        <p>type = url 表示只能输入网址</p>
+        <input type="url" placeholder="协议 + ://">
+        <input type="submit" value="提交" />
+
+
+        <p>type = email 表示只能输入邮箱</p>
+        <input type="email" placeholder="邮箱">
+        <input type="submit" value="提交" />
+    </form>
+
+    <hr />
+
+    <form>
+        <p>标签textarea 设置国定 行列数 的输入区域。</p>
+        <p><label>请留下你的宝贵建议：</label></p>
+        <textarea name="textarea" id="textarea" cols="20" rows="5" placeholder="5行 20列"></textarea>
+        <p />
+        <input type="submit" value="确定" name="submit" /> &nbsp;&nbsp;
+        <input type="reset" value="重置" name="reset" />
+    </form>
+
+
+    <hr />
+
+    <form>
+        <label for="label">label 的 for属性值 关联 input 的 id :</label>
+        <input type="text" id="label" placeholder="">
+    </form>
+
+    <hr />
+
+    <form>
+        <p> type = radio 设置单选框 对应选项的 name属性要一致。</p>
+        <label for="male">male</label>
+        <input type="radio" id="male" value="1" name="gender" checked="checked">
+
+        <label for="female">female</label>
+        <input type="radio" id="female" value="2" name="gender">
+
+    </form>
+
+    <hr />
+
+    <form>
+
+        <p> type = checkbox 设置复选框</p>
+        <label for="11">11</label>
+        <input type="checkbox" id="11" value="1">
+
+        <label for="12 ">12</label>
+        <input type="checkbox" id="12" value="2" checked="checked">
+
+        <label for="13 ">13</label>
+        <input type="checkbox" id="13" value="3">
+
+    </form>
+
+    <hr />
+
+    <form>
+        <p>select 设置下拉选择框 option 为选项</p>
+        <label for="select">请选择型号：</label>
+        <select name="select" id="select">
+            <option value="1" selected="selected">型号1</option>
+            <option value="2">型号2</option>
+            <option value="3">型号3</option>
+            <option value="4">型号4</option>
+        </select>
+
+    </form>
+
+
+    <hr />
+
+    <form>
+        <p>重置 会重置同一个form表单中的输入</p>
+        <input type="text" id="text1">
+        <input type="password" id="text2">
+        <input type="submit" value="提交">
+        <input type="reset" value="重置">
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CssLearn</title>
+    <link rel="stylesheet" href="css/csslearn.css">
+</head>
+
+<body>
+
+    <h1>分组选择器h1,h2,h3{text-align: center;}, 多个标签用逗号隔开</h1>
+    <h2>分组选择器h1,h2,h3{text-align: center;}, 多个标签用逗号隔开</h2>
+    <h3>分组选择器h1,h2,h3{text-align: center;}, 多个标签用逗号隔开</h3>
+
+    <p class="redbg">通过 p.class 设置样式</p>
+
+    <p id="id_1">通过 #id 设置样式</p>
+
+    <p class="redbg whitetext fontsize20" id="id_2">通过多个class + id 设置样式</p>
+
+
+
+    <p>伪类选择器 a:hover : <a href="http://www.baidu.com" target="_blank">百度一下</a></p>
+
+    <hr />
+
+    <p> 包含选择器 .classname>li：指对应classname下面的第一子级 li 都应用样式</p>
+
+    <ul class="blueborder">
+        <li>type1
+            <ul>
+                <li>type_11</li>
+                <li>type_12</li>
+                <li>type_13</li>
+            </ul>
+        </li>
+        <li>type2
+            <ul>
+                <li>type_21</li>
+                <li>type_22</li>
+                <li>type_23</li>
+            </ul>
+        </li>
+        <li>type3
+            <ul>
+                <li>type_31</li>
+                <li>type_32</li>
+                <li>type_33</li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr />
+
+    <p> 包含选择器 .classname li：指对应classname下面的所有 li 都应用样式</p>
+
+    <ul class="burlywoodborder">
+        <li>type1
+            <ul>
+                <li>type_11</li>
+                <li>type_12</li>
+                <li>type_13</li>
+            </ul>
+        </li>
+        <li>type2
+            <ul>
+                <li>type_21</li>
+                <li>type_22</li>
+                <li>type_23</li>
+            </ul>
+        </li>
+        <li>type3
+            <ul>
+                <li>type_31</li>
+                <li>type_32</li>
+                <li>type_33</li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+/* 选择器{样式;} 
+
+   为h1标签设置样式 */
+
+h1 {
+    text-align: center;
+    color: #000;
+}
+
+
+/* .类选器名称{css样式代码;} 
+   
+   为class="classname" 的标签设置样式 */
+
+.redbg {
+    background: chocolate;
+}
+
+.fontsize20 {
+    font-size: 20px;
+}
+
+.whitetext {
+    color: #fff;
+}
+
+
+/* #id选择器名称{css样式代码;}
+
+  #id="idvalue" 的标签设置样式 */
+
+#id_1 {
+    text-align: center;
+}
+
+#id_2 {
+    text-align: end;
+    padding: 8px;
+    margin: 8px;
+}
+
+
+/* 
+类和ID选择器的区别
+
+相同点：可以应用于任何元素
+
+不同点：
+1、ID选择器只能在文档中使用一次。
+2、可以使用类选择器词列表方法为一个元素同时设置多个样式。
+即 class 可以有多个值   id只能有一个值
+.stress{
+    color:red;
+}
+.bigsize{
+    font-size:25px;
+}
+<span class="stress bigsize">三年级</span>
+ */
+
+
+/* 
+ 子选择器
+
+ .food>li{border:1px solid red;}
+ 这行代码会使class名为food下的第一代后代 子元素li（水果、蔬菜）加入红色实线边框。
+
+ 为class为classname的ul 中的第一代li标签设置样式
+  */
+
+ul.blueborder>li {
+    border: 1px solid blue;
+}
+
+
+/* 
+包含选择器
+.first  span{color:red;}
+> 作用于元素的第一代后代，空格 作用于元素的所有后代。
+
+ 为class为classname的ul 中的所有li标签设置样式
+*/
+
+ul.burlywoodborder li {
+    border: 1px solid burlywood;
+}
+
+
+/* 
+通用选择器
+```
+* {color:red;}
+```
+*/
+
+* {
+    color: black;
+    background-color: white;
+}
+
+
+/* 
+ 伪类选择器
+ a:hover{color:red;}
+
+ 鼠标移动到连接上变红
+*/
+
+a:hover {
+    color: red;
+}
+
+
+/*
+ 分组选择器 
+
+ h1,h2,h3{color:red;} 标签 都应用改样式
+ 相当于
+ h2{color:red;}
+ h3{color:red;}
+*/
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
