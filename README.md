@@ -1,7 +1,7 @@
 # AndroidDevLearnWeb
 
 
-* [install and config](https://github.com/103style/AndroidDevLearnWeb/blob/master/intall.md)
+* [install and config](https://github.com/103style/AndroidDevLearnWeb/blob/master/install.md)
 
 * [run the first project](https://github.com/103style/AndroidDevLearnWeb/blob/master/WebTest)
 
