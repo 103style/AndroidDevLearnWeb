@@ -80,6 +80,19 @@
         </li>
     </ul>
 
+    <hr />
+
+    <p>选择器的优先级 内联样式 > id选择器 > 类选择器 > 标签选择器 > 通配符选择器</p>
+
+
+    <p style="color: red;" id="idblue" class="classyellow">内联样式红色 id样式蓝色 类样式黄色 标签样式黑色</p>
+    <p id="idblue" class="classyellow">id样式蓝色 类样式黄色 标签样式黑色</p>
+    <p class="classyellow"> 类样式黄色 标签样式黑色</p>
+    <p> 标签样式黑色</p>
+
+    <hr />
+
+
 </body>
 
 </html>

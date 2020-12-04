@@ -125,3 +125,27 @@ h2,
 h3 {
     text-align: center;
 }
+
+h2 {
+    font-style: italic;
+}
+
+h3 {
+    font-style: oblique;
+}
+
+
+/* 选择器的优先级 内联样式 > id选择器 > 类选择器 > 标签选择器 > 通配符选择器 
+ */
+
+p {
+    color: black;
+}
+
+#idblue {
+    color: blue;
+}
+
+.classyellow {
+    color: yellow;
+}
