@@ -54,8 +54,8 @@
 .header {
     width: 1190px;
     display: flex;
-    margin: 0px;
-    padding: 10px;
+    margin: 0px auto;
+    padding: 10px 0px;
 }
 
 .header .logo-box {
@@ -69,8 +69,30 @@
 }
 
 .header .search-bar {
-    padding: 15px 0px 0px 50px;
+    padding: 10px 0px 0px 50px;
     display: flex;
+}
+
+.header .recommend {
+    font-size: 12px;
+    padding: 5px 0px 20px 50px;
+}
+
+.header .recommend a {
+    color: #999999;
+}
+
+.header .recommend .recommenditem {
+    color: #e1251b;
+}
+
+.header a.item {
+    font-weight: bold;
+    color: #e1251b;
+}
+
+.header a:hover {
+    color: #c81623;
 }
 
 .search-bar input {
@@ -83,18 +105,18 @@
 }
 
 .search-bar .search-btn {
-    width: 58px;
+    width: 50px;
     height: 34px;
     border: 1px solid #e1251b;
     background: #e1251b;
     /* 鼠标移上去变成小手 */
     cursor: pointer;
+    color: #ffffff;
     text-align: center;
     line-height: 34px;
 }
 
 .search-bar .iconfont-search {
-    color: white;
     font-size: 22px;
     font-weight: bold;
 }
@@ -116,15 +138,6 @@
     font-weight: bold;
 }
 
-.header .recommend {
-    font-size: 12px;
-    padding: 5px 0px 20px 50px;
-}
-
-.header .recommend a {
-    color: #999999;
-}
-
 .search-box ul li {
     display: inline-block;
     padding: 0px 10px;
@@ -133,4 +146,122 @@
 .search-box ul li a {
     color: #333333;
     text-decoration: none;
+}
+
+
+/* 内容区 */
+
+.content .wrapper {
+    margin: 0px auto;
+    width: 1190px;
+    padding: 10px 0px;
+    display: flex;
+}
+
+.menu-box {
+    width: 190px;
+    background: #ffffff;
+    position: relative;
+    padding: 10px 0px;
+    margin-right: 10px;
+}
+
+.menu-box ul li {
+    height: 25px;
+    line-height: 25px;
+    padding: 0px 12px;
+    overflow: hidden;
+}
+
+.menu-box ul li:hover {
+    background: #d9d9d9;
+}
+
+.menu-box ul li a {
+    color: #333333;
+    text-decoration: none;
+}
+
+.menu-box ul li a:hover {
+    color: #e1251b;
+}
+
+.menu-box .sub-menu {
+    position: absolute;
+    top: 0px;
+    left: 190px;
+    background: #ffffff;
+    z-index: 10;
+    width: 900px;
+    padding: 10px 20px 20px 20px;
+    font-size: 12px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+
+/* .menu-box ul li:hover .sub-menu {
+    display: block;
+} */
+
+
+/* 通过js控制 */
+
+.menu-box .sub-menu.active {
+    display: block;
+}
+
+
+/* .menu-box ul li.active {
+    display: block;
+} */
+
+.sub-menu .left-box {
+    float: left;
+    max-width: 700px;
+}
+
+.sub-menu .right-box {
+    float: right;
+    width: 160px;
+}
+
+.sub-menu .pic-box {
+    margin: 0px 0px 10px 0px;
+}
+
+.sub-menu .pic-box:last-child {
+    margin: 0px;
+}
+
+.sub-menu .menu-title {
+    margin: 10px 0px 10px 0px;
+}
+
+.sub-menu .menu-title .item {
+    display: inline-block;
+    background: #333333;
+    padding: 0px 8px;
+    margin: 0px 10px 0px 0px;
+    color: #ffffff;
+}
+
+.sub-menu .menu-title .item:hover {
+    background: #e1251b;
+}
+
+.sub-menu dl {
+    display: flex;
+}
+
+.sub-menu dt {
+    font-weight: bold;
+    width: 70px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.sub-menu dd a {
+    padding: 4px 8px 4px 8px;
+    white-space: nowrap;
 }
