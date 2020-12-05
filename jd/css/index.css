@@ -265,3 +265,95 @@
     padding: 4px 8px 4px 8px;
     white-space: nowrap;
 }
+
+.slider-box {
+    margin-right: 10px;
+}
+
+.slider-box .slider {
+    width: 590px;
+    height: 470px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-box .slider ul {
+    position: absolute;
+    top: 0px;
+    /* 轮播图用 */
+    left: -590px;
+    width: 500%;
+    height: 100%;
+}
+
+.slider-box .slider ul li {
+    float: left;
+}
+
+.slider-box .left-box {
+    background: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.slider-box .right-box {
+    background: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.slider-box .left-box,
+.right-box span {
+    font-size: 24px;
+}
+
+.slider-box .index-box {
+    position: absolute;
+    bottom: 3%;
+    left: 10%;
+}
+
+
+/* 
+">"表示直系的
+" " 表示所有后代  
+*/
+
+.slider-box .index-box>ol {
+    height: 14px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.slider-box .index-box>ol>li {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+    list-style: none;
+    cursor: pointer;
+}
+
+.slider-box .index-box>ol>li.active {
+    background: #e1251b;
+}

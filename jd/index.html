@@ -3535,7 +3535,30 @@
 
                 </div>
                 <!-- 轮播图 -->
-                <div class="slider-box"></div>
+                <div class="slider-box">
+                    <div class="slider" id="slider">
+                        <ul class="clearfix">
+                            <li><img width="590" height="470" src="./img/1.jpg" alt="slide img 1"></li>
+                            <li><img width="590" height="470" src="./img/2.jpg" alt="slide img 2"></li>
+                            <li><img width="590" height="470" src="./img/3.jpg" alt="slide img 3"></li>
+                            <li><img width="590" height="470" src="./img/4.jpg" alt="slide img 4"></li>
+                            <li><img width="590" height="470" src="./img/5.jpg" alt="slide img 5"></li>
+                        </ul>
+
+                        <div class="left-box">
+                            <span>&lt;</span>
+                        </div>
+                        <div class="right-box">
+                            <span>&gt;</span>
+                        </div>
+
+                        <div class="index-box">
+                            <ol>
+
+                            </ol>
+                        </div>
+                    </div>
+                </div>
                 <!-- 广告 -->
                 <div class="ad-box"></div>
                 <!-- 个人信息 京东相关的功能信息 -->
@@ -3550,8 +3573,10 @@
     </div>
 
     <script src="./js/menu.js"></script>
+    <script src="./js/slider.js"></script>
     <script type="text/javascript">
         const menu = new Menu("#menu");
+        const slider = new Slider("#slider");
     </script>
 </body>
 

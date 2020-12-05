@@ -22,3 +22,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+    height: 0px;
+}
