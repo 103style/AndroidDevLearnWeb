@@ -123,7 +123,7 @@
 
 .search-bar .cart-btn {
     margin: 0px 0px 0px 20px;
-    border: 1px solid #e1251b;
+    border: 1px solid #eee;
     height: 34px;
     width: 100px;
     line-height: 34px;
@@ -356,4 +356,208 @@
 
 .slider-box .index-box>ol>li.active {
     background: #e1251b;
+}
+
+.wrapper .ad-box {
+    width: 190px;
+    margin-right: 10px;
+    position: relative;
+}
+
+.wrapper .ad-box .slider {
+    width: 190px;
+    position: relative;
+    overflow: hidden;
+    height: 470px;
+}
+
+.wrapper .ad-box .slider ul {
+    position: absolute;
+    top: 0px;
+    /* 轮播图用 */
+    width: -190px;
+}
+
+.wrapper .ad-box .slider ul li {
+    float: left;
+}
+
+.wrapper .ad-box .pic-box:not(:last-child) {
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.wrapper .ad-box .left-box {
+    background: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.wrapper .ad-box .right-box {
+    background: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.wrapper .ad-box .left-box,
+.right-box span {
+    font-size: 24px;
+}
+
+.new-box {
+    width: 190px;
+    margin-right: 10px;
+    overflow: hidden;
+    background: white;
+    position: relative;
+}
+
+.new-box a {
+    font-size: 12px;
+    color: #666666;
+    text-decoration: none;
+}
+
+.new-box .user-box {
+    width: 100%;
+}
+
+.new-box .user-box .user-layout {
+    display: flex;
+    left: 50%;
+    width: 100%;
+    padding: 10px 0px 10px 10px;
+}
+
+.new-box .user-box .logo {
+    background: #e1251b;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.new-box .user-box .user-avatar {
+    margin-left: 10px;
+}
+
+.new-box .user-box .user_show {
+    margin-left: 10px;
+}
+
+.new-box .user-vip {
+    width: 100%;
+    left: 50%;
+    height: 25px;
+    position: absolute;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.new-box .user-vip .user-new {
+    background: #e1251b;
+    margin: 0px 5px;
+}
+
+.new-box .user-vip .user-plus {
+    background: #666;
+    margin: 0px 5px;
+    color: #e5d790;
+}
+
+.new-box .user-vip a {
+    text-decoration: none;
+    color: white;
+    width: 70px;
+    padding-top: 3px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 40px;
+}
+
+.new-box .user-vip a:hover {
+    background: #c81623;
+    color: white;
+}
+
+.new-box .news_tit_box {
+    margin: 0px 10px;
+    overflow: hidden;
+    padding-top: 40px;
+}
+
+.new-box .news_tit_box .new-title {
+    margin-bottom: 4px;
+}
+
+.new-box .news_tit_box ul li {
+    padding: 4px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.new-box .news_tit_box ul li span {
+    color: #e1251b;
+    display: inline-block;
+    background: rgba(255, 0, 0, 0.1);
+    position: relative;
+    height: 16px;
+    width: 35px;
+    font-size: 12px;
+    vertical-align: 0px;
+    text-align: center;
+}
+
+.new-box .news_tit_box ul li a:hover {
+    color: #e1251b;
+}
+
+.new-box .others-box {
+    width: 190px;
+    margin-top: 10px;
+}
+
+.new-box .others-box .others-line {
+    display: flex;
+    justify-content: space-between;
+    width: 190px;
+}
+
+.new-box .others-box .others-line ul {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.new-box .others-box .others-line ul li {
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+}
+
+.new-box .others-box img {
+    width: 28px;
+    height: 28px;
+}
+
+.new-box .others-box a:hover {
+    color: #e1251b;
 }
