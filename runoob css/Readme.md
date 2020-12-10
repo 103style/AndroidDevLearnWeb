@@ -250,3 +250,15 @@ p:first-child i
 ### [CSS 导航栏](https://www.runoob.com/css/css-navbar.html)
 
 ---
+
+### 设置图像透明度
+`opacity` 属性
+```
+img
+{
+  opacity:0.4;
+  filter:alpha(opacity=40); /* IE8 及其更早版本 */
+}
+```
+
+---

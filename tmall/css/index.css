@@ -1,0 +1,140 @@
+.act-1212 {
+    width: 100%;
+    height: 80px;
+    background: #d8392f;
+}
+
+.act-1212 img {
+    display: block;
+    margin: 0px auto;
+}
+
+.nav-box {
+    background: #f2f2f2;
+    height: 40px;
+    border-bottom-color: transparent !important;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.30);
+}
+
+.nav-box .nav {
+    width: 1230px;
+    margin: 0px auto;
+    height: 100%;
+}
+
+.nav-box .nav .left {
+    float: left;
+    height: 32px;
+}
+
+.nav-box .nav .left span {
+    font-size: 12px;
+    line-height: 32px;
+    padding: 0 10px;
+    color: #999;
+}
+
+.nav-box .nav .quick-menu {
+    float: right;
+}
+
+.nav-box .nav .quick-menu li {
+    float: left;
+    height: 40px;
+    z-index: 93110;
+}
+
+.nav-box .nav .quick-menu .sn-sepatator {
+    width: 0px;
+    height: 14px;
+    position: relative;
+    line-height: 14px;
+    font-size: 0px;
+    vertical-align: top;
+    top: 9px;
+    border-left: 1px solid #ccc;
+    margin: 0 2px 0 5px;
+}
+
+.nav-box .nav .quick-menu li span {
+    color: #FF0036;
+    line-height: 32px;
+    margin-right: 2px;
+    font-size: 12px;
+}
+
+.nav-box .nav a {
+    font-size: 12px;
+    line-height: 32px;
+    padding: 0 10px;
+    color: #999;
+}
+
+.nav-box .nav a:hover {
+    color: #FF0036;
+}
+
+.nav-box .nav .menu-bd {
+    visibility: hidden;
+    display: block;
+    float: none;
+    background: white;
+    position: absolute;
+}
+
+.nav-box .nav .menu-bd ul li {
+    display: block;
+    float: none;
+}
+
+.nav-box .nav .menu-item:hover {
+    background: white;
+}
+
+.nav-box .nav .menu-item:hover a {
+    text-decoration: underline;
+}
+
+.nav-box .nav .menu-item:hover .menu-bd {
+    visibility: visible;
+}
+
+.nav-box .nav .sn-sitemap:hover {
+    background: white;
+}
+
+.nav-box .nav .sn-sitemap a:hover {
+    color: #999;
+}
+
+.nav-box .nav .sn-seller .menu-bd {
+    width: 122px;
+    overflow: hidden;
+    /* right: 0; */
+    left: auto;
+}
+
+.nav-box .nav .sn-seller ul {
+    width: 122px;
+    margin-top: -5px;
+    display: block;
+}
+
+.nav-box .nav .sn-seller li {
+    float: none;
+    padding: 5px 0;
+    height: auto;
+    display: block;
+    margin-right: -20px;
+    border-bottom: 1px dotted #827777;
+}
+
+.nav-box .nav .sn-seller p {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.nav-box .nav .sn-seller a {
+    padding: 0 5px;
+}
