@@ -14,6 +14,7 @@
     height: 40px;
     border-bottom-color: transparent !important;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.30);
+    margin-bottom: 4px;
 }
 
 .nav-box .nav {
@@ -137,4 +138,82 @@
 
 .nav-box .nav .sn-seller a {
     padding: 0 5px;
+}
+
+
+/* header 部分开始 */
+
+.header-box {
+    min-width: 990px;
+    height: 130px;
+    margin-bottom: 0;
+}
+
+.header-box .header {
+    width: 1230px;
+    margin: 0 auto;
+}
+
+.header-box .search-box {
+    width: 625px;
+    margin-top: 38px;
+    right: 50%;
+    position: absolute;
+    display: inline-block;
+    box-sizing: border-box;
+    transform: translateX(50%);
+}
+
+.header-box .search-box form input {
+    width: 491px;
+    border: none;
+    border-width: 1.5px 0 1.5px 1.5px;
+    border-color: red;
+    border-style: solid;
+    height: 36px;
+    font-size: 14px;
+    line-height: 36px;
+    background: white;
+    outline: none;
+    text-indent: 5px;
+}
+
+.header-box .search-box button {
+    width: 132px;
+    height: 100%;
+    cursor: pointer;
+    border: 0;
+    top: 0;
+    font-size: 18px;
+    position: absolute;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 5px;
+    background: #FF0036;
+}
+
+.content .main-nav {
+    width: 1030px;
+    margin: 0 auto;
+    height: 36px;
+}
+
+.content .main-nav a {
+    width: 1030px;
+    line-height: 36px;
+    margin: 0 auto;
+    font-weight: 500;
+    color: #333;
+    font-size: 16px;
+    height: 36px;
+    cursor: pointer;
+    word-spacing: normal;
+    letter-spacing: normal;
+    position: relative;
+    padding: 0 8px;
+}
+
+.content .activity-bg {
+    height: 2800px;
+    background: url(data:image/gif;base64,R0lGODlhyQBjANUAAFtbWvdXSaioqM7PzlNTHn19fPj394R3SSgjF…IpZgEhouEBjn4iGCh39D2IJkyHckkfi4vGKAB95VUapZY6UmDLpZWW96ifWnSaBKBOHhEEADs=) center center no-repeat #e5e5e5!important;
 }
