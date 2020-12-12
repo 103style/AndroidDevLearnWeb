@@ -1,6 +1,8 @@
 html,
 body,
 ul,
+dl,
+dd,
 li {
     margin: 0px;
     padding: 0px;

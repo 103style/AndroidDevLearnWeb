@@ -46,7 +46,7 @@ class Category {
             let item = this.lis[i];
             let index = i;
             item.addEventListener("mouseenter", (e) => {
-                console.log("li-" + i + " mouseenter")
+                // console.log("li-" + index + " mouseenter")
                 if (this.timer1 != null) {
                     clearTimeout(this.timer1)
                 }
@@ -58,20 +58,45 @@ class Category {
                     })
 
                     //然后给对应的item加上active
-                    this.menudetailItems[index].classList.add("active")
+                    // this.menudetailItems[index].classList.add("active")
+                    //目前全部显示第一个
+                    this.menudetailItems[0].classList.add("active")
                 }, 200)
 
             }, false)
 
             //当鼠标移出item之后删除 menudetail中对应下标的 item的 active
             item.addEventListener("mouseleave", (e) => {
-                console.log("li-" + i + " mouseleave")
+                // console.log("li-" + index + " mouseleave")
+
+                //清除lis的延时任务
+                if (this.timer1 != null) {
+                    clearTimeout(this.timer1)
+                }
                 if (this.timer2 != null) {
                     clearTimeout(this.timer2)
                 }
                 this.timer2 = setTimeout(() => {
                     this.menudetailItems[index].classList.remove("active")
                 }, 200)
+            }, false)
+        }
+
+        for (var i = 0; i < this.menudetailItems.length; i++) {
+            let item = this.menudetailItems[i];
+            item.addEventListener("mouseenter", (e) => {
+                console.log("item mouseenter")
+                if (this.timer2 != null) {
+                    clearTimeout(this.timer2)
+                }
+                //然后给对应的item加上active
+                item.classList.add("active")
+            }, false)
+
+            //当鼠标移出item之后删除 menudetail中对应下标的 item的 active
+            item.addEventListener("mouseleave", (e) => {
+                console.log("item mouseleave")
+                item.classList.remove("active")
             }, false)
         }
     }
