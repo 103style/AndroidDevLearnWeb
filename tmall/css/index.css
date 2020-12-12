@@ -11,10 +11,12 @@
 
 .nav-box {
     background: #f2f2f2;
-    height: 40px;
+    height: 40px !important;
     border-bottom-color: transparent !important;
+    position: relative!important;
+    z-index: 99999;
+    width: auto;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.30);
-    margin-bottom: 4px;
 }
 
 .nav-box .nav {
@@ -206,17 +208,6 @@
     width: 1030px;
 }
 
-.content .main-nav .seprate {
-    /* margin-bottom: 2px;
-    box-sizing: border-box;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: red; */
-    /* border-bottom-color: rgba(0, 0, 0, .1); */
-    background-color: red;
-    height: 2px;
-}
-
 .content .main-nav a {
     float: left;
     font-weight: 500;
@@ -230,6 +221,10 @@
     position: relative;
     padding: 0 8px;
     display: block;
+}
+
+.content .main-nav a:hover {
+    color: #DD2727;
 }
 
 .content .main-nav a img {
@@ -460,6 +455,10 @@
     color: #e54077!important;
 }
 
+.content .menu-box .menu-detail .menu-detail-item dd a:hover {
+    color: #e54077!important;
+}
+
 .content .menu-box .menu-detail .menu-detail-item .right-box {
     float: left;
     background-color: #FAFAFA;
@@ -474,8 +473,12 @@
     margin-bottom: 10px;
 }
 
+#mallPage {
+    background-image: url("https://img.alicdn.com/tfs/TB1ymTusLzO3e4jSZFxXXaP_FXa-1702-1356.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
 .content .activity-bg {
-    height: 800px;
-    width: 100%;
-    background: rgba(255, 0, 0, 0.6);
+    height: 1356px;
 }

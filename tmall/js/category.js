@@ -77,7 +77,10 @@ class Category {
                     clearTimeout(this.timer2)
                 }
                 this.timer2 = setTimeout(() => {
-                    this.menudetailItems[index].classList.remove("active")
+                    //然后给对应的item删除active
+                    // this.menudetailItems[index].classList.remove("active")
+                    //目前全部显示第一个
+                    this.menudetailItems[0].classList.remove("active")
                 }, 200)
             }, false)
         }
