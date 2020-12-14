@@ -5,8 +5,8 @@ class Category {
 
         this.categorytab = this.box.querySelector(".category-tab-nav");
 
-        this.tab1 = this.categorytab.querySelector(".tab1");
-        this.tab2 = this.categorytab.querySelector(".tab2");
+        // this.tab1 = this.categorytab.querySelector(".tab1");
+        // this.tab2 = this.categorytab.querySelector(".tab2");
         this.menubox = this.box.querySelector(".menu-box");
         this.menunormal = this.menubox.querySelector(".menu-normal");
         this.lis = this.menunormal.querySelectorAll("li");
@@ -22,22 +22,22 @@ class Category {
     }
 
     init() {
-        console.log("category")
+        // console.log("category")
 
-        this.tab1.addEventListener("mouseenter", (e) => {
-            console.log("tab1 mouseenter")
-            this.removeActive()
-            this.tab1.classList.add("active")
-            this.menunormal.classList.add("active")
-        }, false)
+        // this.tab1.addEventListener("mouseenter", (e) => {
+        //     console.log("tab1 mouseenter")
+        //     this.removeActive()
+        //     this.tab1.classList.add("active")
+        //     this.menunormal.classList.add("active")
+        // }, false)
 
-        this.tab2.addEventListener("mouseenter", (e) => {
-            console.log("tab2 mouseenter")
+        // this.tab2.addEventListener("mouseenter", (e) => {
+        //     console.log("tab2 mouseenter")
 
-            this.removeActive()
-            this.tab2.classList.add("active")
-            this.menumetting.classList.add("active")
-        }, false)
+        //     this.removeActive()
+        //     this.tab2.classList.add("active")
+        //     this.menumetting.classList.add("active")
+        // }, false)
     }
 
 
@@ -106,8 +106,8 @@ class Category {
 
     removeActive() {
         console.log("remove avtive")
-        this.tab1.classList.remove("active")
-        this.tab2.classList.remove("active")
+            // this.tab1.classList.remove("active")
+            // this.tab2.classList.remove("active")
         this.menunormal.classList.remove("active")
         this.menumetting.classList.remove("active")
     }
