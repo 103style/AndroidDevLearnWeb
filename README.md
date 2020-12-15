@@ -11,7 +11,9 @@
   * [ScreenShot](https://github.com/103style/AndroidDevLearnWeb/blob/master/jd/screenshot.gif)
   
 * [基于京东首页的学习课程 实现 天猫首页](https://github.com/103style/AndroidDevLearnWeb/tree/master/tmall)
+  * 需要用到下面 **第三方工具** 链接中的 **阿里巴巴矢量图**
   * [ScreenShot](https://github.com/103style/AndroidDevLearnWeb/blob/master/tmall/tmall_srceenshot.gif)
+  
 
 * [界面修改同步刷新工具 BrowerSync](https://github.com/103style/AndroidDevLearnWeb/blob/master/BrowerSync.md)
 
