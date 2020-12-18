@@ -1,0 +1,18 @@
+div.list {
+    display: flex;
+    border-bottom: 1px solid rgb(187, 184, 184);
+    padding: 16px;
+}
+
+div.item {
+    background-color: red;
+    margin: 16px;
+    padding: 16px;
+    color: white;
+    border: 1px solid white;
+}
+
+p.title {
+    margin: 8px 16px 0;
+    font-size: 20px;
+}
