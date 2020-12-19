@@ -71,4 +71,9 @@ $(document).ready(function() {
         $(".p_slidetoggle").slideToggle(1000);
     });
 
+
+    //动画
+    $(".d_tranlateX").click(function() {
+        $(".p_tranlateX").animate({ left: '50px' });
+    });
 });

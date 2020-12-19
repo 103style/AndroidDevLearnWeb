@@ -154,5 +154,65 @@ $(document).ready(function(){
 
 ### 动画
 
+语法：`$(selector).animate({params},speed,callback);`
+* 必需的 `params` 参数定义形成动画的 CSS 属性。
+* 可选的 `speed` 参数规定效果的时长。它可以取以下值："slow"、"fast" 或毫秒。
+* 可选的 `callback` 参数是动画完成后所执行的函数名称。
+
+把 `<div>` 元素往右边移动了 250 像素：
+```
+$("button").click(function(){
+  $("div").animate({left:'250px'});
+});
+```
+
+**注意！** 默认情况下，所有 HTML 元素都有一个静态位置，且无法移动。 如需对位置进行操作，要记得首先把元素的 CSS `position` 属性设置为 `relative`、`fixed` 或 `absolute`！
+
+操作多个属性：
+```
+$("button").click(function(){
+  $("div").animate({
+    left:'250px',
+    opacity:'0.5',
+    height:'150px',
+    width:'150px'
+  });
+});
+```
+
+
+使用相对值
+```
+$("button").click(function(){
+  $("div").animate({
+    left:'250px',
+    height:'+=150px',
+    width:'+=150px'
+  });
+});
+```
+
+使用预定义的值
+```
+$("button").click(function(){
+  $("div").animate({
+    height:'toggle'
+  });
+})
+```
+
+
+使用队列功能
+```
+$("button").click(function(){
+  var div=$("div");
+  div.animate({height:'300px',opacity:'0.4'},"slow");
+  div.animate({width:'300px',opacity:'0.8'},"slow");
+  div.animate({height:'100px',opacity:'0.4'},"slow");
+  div.animate({width:'100px',opacity:'0.8'},"slow");
+});
+```
+
+
 
 ---
