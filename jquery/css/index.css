@@ -1,5 +1,6 @@
 div.list {
     display: flex;
+    flex-wrap: wrap;
     border-bottom: 1px solid rgb(187, 184, 184);
     padding: 16px;
 }
@@ -15,4 +16,18 @@ div.item {
 p.title {
     margin: 8px 16px 0;
     font-size: 20px;
+}
+
+.animatepos {
+    position: relative;
+}
+
+p.animate_stop {
+    background-color: black;
+    color: white;
+    padding: 8px;
+}
+
+.backtext {
+    color: black;
 }

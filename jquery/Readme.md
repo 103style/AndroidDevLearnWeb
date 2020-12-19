@@ -213,6 +213,21 @@ $("button").click(function(){
 });
 ```
 
+停止动画
+```
+//语法
+$(selector).stop(stopAll,goToEnd);
 
+//示例
+$("#stop").click(function(){
+  $("#panel").stop();
+});
+```
 
 ---
+
+## 链(Chaining)
+Chaining 允许我们在一条语句中运行多个 jQuery 方法（在相同的元素上）。
+```
+$("#p1").animate({width:'+50px'}).slideUp(2000).slideDown(2000).hide().show();
+```

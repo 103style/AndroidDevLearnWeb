@@ -105,7 +105,103 @@
         <p class="title">jQuery 动画</p>
         <div class="list">
             <div class="item d_tranlateX">
-                <p style="position: relative;" class="p_tranlateX">向右移动50px</p>
+                <p class="p_tranlateX animatepos">移动到left=50px</p>
+            </div>
+
+            <div class="item d_anim_test1">
+                <p class="p_anim_test1 animatepos">
+                    操作多个属性,移动到left=50px
+                    <br>透明度变成0.5
+                    <br>宽高变成200px
+                </p>
+            </div>
+
+            <div class="item d_anim_plus">
+                <p class="p_anim_plus animatepos">
+                    通过 `+=10px` 增加宽度和高度
+                </p>
+            </div>
+
+            <div class="item d_anim_toggle">
+                <p class="p_anim_toggle animatepos">
+                    设置宽高为 toggle
+                </p>
+            </div>
+
+            <div class="item d_anim_queue">
+                <p class="p_anim_queue animatepos">
+                    动画队列
+                    <br> 1000ms内 移动到left=50px, 透明度变成0.5
+                    <br> 1000ms内 移动到 left= -100px, 透明度变成1
+                    <br> 1000ms内 移动到 left= 0px, 宽高+50px
+                </p>
+            </div>
+
+            <div class="item d_anim_stop">
+                <p class="p_anim_stop animatepos">
+                    5000ms内 宽高+200px
+                </p>
+            </div>
+
+            <p class="animate_stop">停止"5000ms内 宽高+200px"的动画</p>
+
+
+            <div class="item d_anim_callback">
+                <p class="p_anim_callback animatepos">
+                    2000ms完成狂高+50px的动画之后 弹框提示
+                </p>
+            </div>
+        </div>
+
+
+        <p class="title">链(Chaining)</p>
+        <div class="list">
+            <div class="item d_chaining">
+                <p class="p_chaining">
+                    $("").click().slideUp(2000).slideDown(2000).hide(2000).show(2000).
+                </p>
+            </div>
+        </div>
+
+
+        <p class="title">获取、修改内容和属性</p>
+        <div class="list">
+            <div class="item">
+                <p class="text_get">text()函数测试点我！</p>
+            </div>
+
+            <div class="item">
+                <p class="html_get">html()函数测试 <b>点我！</b></p>
+            </div>
+
+            <div class="item">
+                <p class="val_get">val()函数测试 点我!</p>
+                <input class="input_val_get" type="text" value="Hello World!">
+            </div>
+
+            <div class="item">
+                <p class="attr_get">attr()函数测试 点我!</p>
+            </div>
+
+
+        </div>
+        <div class="list">
+
+            <div class="item">
+                <p class="text_set">text()修改函数测试点我！</p>
+            </div>
+
+            <div class="item">
+                <p class="html_set">html()修改函数测试 点我！</p>
+            </div>
+
+            <div class="item">
+                <p class="val_set">val()修改函数测试 点我!</p>
+                <input class="input_val_set" type="text" value="Hello World!">
+            </div>
+
+            <div class="item">
+                <p class="attr_set">attr()修改函数测试 点我!</p>
             </div>
         </div>
     </div>
