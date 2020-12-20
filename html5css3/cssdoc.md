@@ -349,3 +349,33 @@ p.first{color:green;}
   ```
 
 ---
+
+## 过渡效果 tansition
+
+语法 `transition: attr time interpolator delay`。
+* `attr` - 要过渡的属性（`all` 表示全部）
+* `time` - 用时(s) 
+* `interpolator` - 过渡速度的变化曲线（ease/ease-in/ease-out/ease-in-out ） 
+* `delay` - 触发的延时(s)
+
+示例
+```
+.transition_test {
+    width: 400px;
+    position: relative;
+    height: 200px;
+    background: pink;
+    transition: all 2s ease-in-out 1s;
+}
+
+.transition_test:hover {
+    width: 800px;
+    height: 400px;
+    margin-top: 10px;
+    background: hotpink;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+```
+
+
+---

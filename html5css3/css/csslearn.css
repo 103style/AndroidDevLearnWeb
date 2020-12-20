@@ -149,3 +149,22 @@ p {
 .classyellow {
     color: yellow;
 }
+
+
+/* transition过渡效果 */
+
+.transition_test {
+    width: 400px;
+    position: relative;
+    height: 200px;
+    background: pink;
+    transition: all 2s ease-in-out 1s;
+}
+
+.transition_test:hover {
+    width: 800px;
+    height: 400px;
+    margin-top: 10px;
+    background: hotpink;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
