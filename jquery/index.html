@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>jQuery Demo</title>
     <link rel="stylesheet" href="css/index.css">
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -13,198 +14,275 @@
 
 <body>
 
-    <div>
-        <p class="title">jQuery 选择器示例：</p>
-        <div class="list">
-            <div class="item">
-                <h2>元素选择器</h2>
-                <button>点我改变 元素选择器 </button>
-            </div>
 
-            <div class="item">
-                <p id="id_selector">id选择器</p>
-                <p id="id_click">点我改变 id选择器</p>
-            </div>
+    <p class="title">jQuery 选择器示例：</p>
+    <div class="list">
+        <div class="item">
+            <h2>元素选择器</h2>
+            <button>点我改变 元素选择器 </button>
+        </div>
 
-
-            <div class="item">
-                <p class="class_show">.class选择器</p>
-                <p class="class_click">点我改变 .class选择器</p>
-            </div>
-
+        <div class="item">
+            <p id="id_selector">id选择器</p>
+            <p id="id_click">点我改变 id选择器</p>
         </div>
 
 
-        <p class="title">jQuery 鼠标事件</p>
-        <div class="list">
-            <div class="item">
-                <p class="event_click">click事件 -- 单击</p>
-            </div>
-
-            <div class="item">
-                <p class="event_dbclick">dbclick事件 -- 双击</p>
-            </div>
-
-            <div class="item">
-                <p class="event_mouse">mouseenter 当鼠标指针进入时的事件 <br> mouseleave 当鼠标指针离开时的事件</p>
-            </div>
-
-            <div class="item">
-                <p class="event_hover">hover 鼠标指针悬停在当前元素上面的事件</p>
-            </div>
+        <div class="item">
+            <p class="class_show">.class选择器</p>
+            <p class="class_click">点我改变 .class选择器</p>
         </div>
 
+    </div>
 
-        <p class="title">jQuery 效果</p>
-        <div class="list">
-            <div class="item d_hide">
-                <p>点我隐藏</p>
-                <p class="p_hide">hide()</p>
-            </div>
-            <div class="item d_show">
-                <p>点我显示</p>
-                <p class="p_show" style="display: none;">show()</p>
-            </div>
-            <div class="item d_toggle">
-                <p>点我切换</p>
-                <p class="p_toggle">toggle()</p>
-            </div>
+
+    <p class="title">jQuery 鼠标事件</p>
+    <div class="list">
+        <div class="item">
+            <p class="event_click">click事件 -- 单击</p>
         </div>
 
-        <div class="list">
-            <div class="item d_fadeout">
-                <p>点我淡出</p>
-                <p class="p_fadeout">fadeOut()</p>
-            </div>
-            <div class="item d_fadein">
-                <p>点我淡入</p>
-                <p class="p_fadein" style="display: none;">fadeIn()</p>
-            </div>
-            <div class="item d_fadetoggle">
-                <p>点我切换</p>
-                <p class="p_fadetoggle">fadeToggle()</p>
-            </div>
+        <div class="item">
+            <p class="event_dbclick">dbclick事件 -- 双击</p>
         </div>
 
-        <div class="list">
-            <div class="item d_slidedown">
-                <p>点我滑入</p>
-                <p class="p_slidedown">slideDown()</p>
-            </div>
-            <div class="item d_slideup">
-                <p>点我滑出</p>
-                <p class="p_slideup">slideUp()</p>
-            </div>
-            <div class="item d_slidetoggle">
-                <p>点我切换</p>
-                <p class="p_slidetoggle">slideToggle()</p>
-            </div>
+        <div class="item">
+            <p class="event_mouse">mouseenter 当鼠标指针进入时的事件 <br> mouseleave 当鼠标指针离开时的事件</p>
         </div>
 
-
-        <p class="title">jQuery 动画</p>
-        <div class="list">
-            <div class="item d_tranlateX">
-                <p class="p_tranlateX animatepos">移动到left=50px</p>
-            </div>
-
-            <div class="item d_anim_test1">
-                <p class="p_anim_test1 animatepos">
-                    操作多个属性,移动到left=50px
-                    <br>透明度变成0.5
-                    <br>宽高变成200px
-                </p>
-            </div>
-
-            <div class="item d_anim_plus">
-                <p class="p_anim_plus animatepos">
-                    通过 `+=10px` 增加宽度和高度
-                </p>
-            </div>
-
-            <div class="item d_anim_toggle">
-                <p class="p_anim_toggle animatepos">
-                    设置宽高为 toggle
-                </p>
-            </div>
-
-            <div class="item d_anim_queue">
-                <p class="p_anim_queue animatepos">
-                    动画队列
-                    <br> 1000ms内 移动到left=50px, 透明度变成0.5
-                    <br> 1000ms内 移动到 left= -100px, 透明度变成1
-                    <br> 1000ms内 移动到 left= 0px, 宽高+50px
-                </p>
-            </div>
-
-            <div class="item d_anim_stop">
-                <p class="p_anim_stop animatepos">
-                    5000ms内 宽高+200px
-                </p>
-            </div>
-
-            <p class="animate_stop">停止"5000ms内 宽高+200px"的动画</p>
-
-
-            <div class="item d_anim_callback">
-                <p class="p_anim_callback animatepos">
-                    2000ms完成狂高+50px的动画之后 弹框提示
-                </p>
-            </div>
-        </div>
-
-
-        <p class="title">链(Chaining)</p>
-        <div class="list">
-            <div class="item d_chaining">
-                <p class="p_chaining">
-                    $("").click().slideUp(2000).slideDown(2000).hide(2000).show(2000).
-                </p>
-            </div>
-        </div>
-
-
-        <p class="title">获取、修改内容和属性</p>
-        <div class="list">
-            <div class="item">
-                <p class="text_get">text()函数测试点我！</p>
-            </div>
-
-            <div class="item">
-                <p class="html_get">html()函数测试 <b>点我！</b></p>
-            </div>
-
-            <div class="item">
-                <p class="val_get">val()函数测试 点我!</p>
-                <input class="input_val_get" type="text" value="Hello World!">
-            </div>
-
-            <div class="item">
-                <p class="attr_get">attr()函数测试 点我!</p>
-            </div>
-
-
-        </div>
-        <div class="list">
-
-            <div class="item">
-                <p class="text_set">text()修改函数测试点我！</p>
-            </div>
-
-            <div class="item">
-                <p class="html_set">html()修改函数测试 点我！</p>
-            </div>
-
-            <div class="item">
-                <p class="val_set">val()修改函数测试 点我!</p>
-                <input class="input_val_set" type="text" value="Hello World!">
-            </div>
-
-            <div class="item">
-                <p class="attr_set">attr()修改函数测试 点我!</p>
-            </div>
+        <div class="item">
+            <p class="event_hover">hover 鼠标指针悬停在当前元素上面的事件</p>
         </div>
     </div>
+
+
+    <p class="title">jQuery 效果</p>
+    <div class="list">
+        <div class="item d_hide">
+            <p>点我隐藏</p>
+            <p class="p_hide">hide()</p>
+        </div>
+        <div class="item d_show">
+            <p>点我显示</p>
+            <p class="p_show" style="display: none;">show()</p>
+        </div>
+        <div class="item d_toggle">
+            <p>点我切换</p>
+            <p class="p_toggle">toggle()</p>
+        </div>
+    </div>
+
+    <div class="list">
+        <div class="item d_fadeout">
+            <p>点我淡出</p>
+            <p class="p_fadeout">fadeOut()</p>
+        </div>
+        <div class="item d_fadein">
+            <p>点我淡入</p>
+            <p class="p_fadein" style="display: none;">fadeIn()</p>
+        </div>
+        <div class="item d_fadetoggle">
+            <p>点我切换</p>
+            <p class="p_fadetoggle">fadeToggle()</p>
+        </div>
+    </div>
+
+    <div class="list">
+        <div class="item d_slidedown">
+            <p>点我滑入</p>
+            <p class="p_slidedown" style="display: none;">slideDown()</p>
+        </div>
+        <div class="item d_slideup">
+            <p>点我滑出</p>
+            <p class="p_slideup">slideUp()</p>
+        </div>
+        <div class="item d_slidetoggle">
+            <p>点我切换</p>
+            <p class="p_slidetoggle">slideToggle()</p>
+        </div>
+    </div>
+
+
+    <p class="title">jQuery 动画</p>
+    <div class="list">
+        <div class="item d_tranlateX">
+            <p class="p_tranlateX animatepos">移动到left=50px</p>
+        </div>
+
+        <div class="item d_anim_test1">
+            <p class="p_anim_test1 animatepos">
+                操作多个属性,移动到left=50px
+                <br>透明度变成0.5
+                <br>宽高变成200px
+            </p>
+        </div>
+
+        <div class="item d_anim_plus">
+            <p class="p_anim_plus animatepos">
+                通过 `+=10px` 增加宽度和高度
+            </p>
+        </div>
+
+        <div class="item d_anim_toggle">
+            <p class="p_anim_toggle animatepos">
+                设置宽高为 toggle
+            </p>
+        </div>
+
+        <div class="item d_anim_queue">
+            <p class="p_anim_queue animatepos">
+                动画队列
+                <br> 1000ms内 移动到left=50px, 透明度变成0.5
+                <br> 1000ms内 移动到 left= -100px, 透明度变成1
+                <br> 1000ms内 移动到 left= 0px, 宽高+50px
+            </p>
+        </div>
+
+        <div class="item d_anim_stop">
+            <p class="p_anim_stop animatepos">
+                5000ms内 宽高+200px
+            </p>
+        </div>
+
+        <p class="animate_stop">停止"5000ms内 宽高+200px"的动画</p>
+
+
+        <div class="item d_anim_callback">
+            <p class="p_anim_callback animatepos">
+                2000ms完成狂高+50px的动画之后 弹框提示
+            </p>
+        </div>
+    </div>
+
+    <p class="title">链(Chaining)</p>
+    <div class="list">
+        <div class="item d_chaining">
+            <p class="p_chaining">
+                $("").click().slideUp(2000).slideDown(2000).hide(2000).show(2000).
+            </p>
+        </div>
+    </div>
+
+    <p class="title">获取、修改内容和属性</p>
+    <div class="list">
+        <div class="item">
+            <p class="text_get">text()函数测试点我！</p>
+        </div>
+
+        <div class="item">
+            <p class="html_get">html()函数测试 <b>点我！</b></p>
+        </div>
+
+        <div class="item">
+            <p class="val_get">val()函数测试 点我!</p>
+            <input class="input_val_get" type="text" value="Hello World!">
+        </div>
+
+        <div class="item">
+            <p class="attr_get">attr()函数测试 点我!</p>
+        </div>
+
+
+    </div>
+
+    <div class="list">
+        <div class="item">
+            <p class="text_set">text()修改函数测试点我！</p>
+        </div>
+
+        <div class="item">
+            <p class="html_set">html()修改函数测试 点我！</p>
+        </div>
+
+        <div class="item">
+            <p class="val_set">val()修改函数测试 点我!</p>
+            <input class="input_val_set" type="text" value="Hello World!">
+        </div>
+
+        <div class="item">
+            <p class="attr_set">attr()修改函数测试 点我!</p>
+        </div>
+    </div>
+
+    <p class="title">添加、删除元素</p>
+    <div class="list">
+        <div class="item emptyDemo">
+            <p class="append_content">Hello World!</p>
+            <p></p>
+            <p class="append clickButton">append "END!" <br>在被选元素的结尾插入内容</p>
+            <p class="prepend clickButton">prepend "HEAD!" <br>在被选元素的开头插入内容</p>
+            <p class="after clickButton">after "After!" <br> 在被选元素之后插入内容</p>
+            <p class="before clickButton">before "Before!" <br> 在被选元素之前插入内容</p>
+            <br>
+            <p class="remove clickButton">点我通过 remove() 删除我</p>
+            <br>
+            <p class="emtpy clickButton">点我通过 empty() 清空当前父元素的所有子元素</p>
+            <br>
+            <p class="emtpyfilter clickButton">点我通过 $("p").empty(".clickButton") 清空所有 类名为clickButton的 p元素的内容 </p>
+        </div>
+    </div>
+
+    <p class="title">获取并设置 CSS 类</p>
+    <div class="list">
+        <div class="item">
+            <p class="addclass">点我添加类名 clickButton</p>
+            <br>
+            <p class="removecalss clickButton">点我删除类名 clickButton</p>
+            <br>
+            <p class="toggleclass"> 点我添加或删除类名 clickButton</p>
+            <br>
+            <p class="cssgetattr clickButton">点我获取css背景属性。</p>
+            <br>
+            <p class="csssetattr clickButton">点我设置css背景属性。</p>
+            <br>
+            <p class="csssetattrs clickButton">点我设置css背景和字体属性。</p>
+        </div>
+    </div>
+
+    <p class="title">jQuery 尺寸</p>
+    <div class="item">
+        <p class="widthget clickButton">通过 width() 获取宽度</p>
+        <p class="heightget clickButton">通过 height() 获取高度</p>
+        <p class="widthset clickButton">通过 width("") 设置宽度</p>
+        <p class="heightset clickButton">通过 height("") 设置高度</p>
+        <br>
+        <p class="innerWidth clickButton">通过 innerWidth() 获取元素的宽度（包括内边距）</p>
+        <p class="innerHeight clickButton">通过 innerHeight() 获取元素的高度（包括内边距）</p>
+        <br>
+        <p class="outerWidth clickButton">通过 outerWidth() 获取元素的宽度（包括内边距和边框）</p>
+        <p class="outerHeight clickButton">通过 outerHeight() 获取元素的高度（包括内边距和边框）</p>
+    </div>
+
+    <p class="title">jQuery 遍历</p>
+    <div class="item">
+        <p class="parent clickButton">点我测试 parent()。给 parent 添加 blue 边框</p>
+        <br>
+        <p class="parents clickButton">点我测试 parents()。给 parents 添加 green 边框</p>
+        <br>
+        <p class="parentsUntil clickButton">点我测试 parentsUntil()。给结果添加 yellow 边框</p>
+        <br>
+        <p class="children clickButton">点我测试 children() 获取 body 的所有直接子元素 并添加 brown 边框</p>
+        <br>
+        <p class="find clickButton">点我测试 find(".title") 获取 body 的所有的类名为 title 的元素 并添加 lime 边框</p>
+    </div>
+
+
+    <p class="title">AJAX</p>
+    <div class="item">
+        <p class="clickButton ajax_load">点我加载外部文本 demo_test.txt</p>
+        <p class="ajax_load_show"></p>
+
+        <p class="clickButton ajax_load_id">点我加载外部文本 demo_test.txt 中 id = ajax_test 的元素值</p>
+        <p class="ajax_load_id_show"></p>
+    </div>
+
+    <!-- <div class="item noConflict_test">
+        <p class="title noConflict_test_show">noConflict 测试， 点我通过 toggle() 显示隐藏切换</p>
+    </div> -->
+
+    <footer style="height: 300px;">
+
+    </footer>
 </body>
 
 </html>

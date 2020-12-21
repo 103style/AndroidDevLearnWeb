@@ -1,0 +1,2 @@
+<h1>hello ajax load.</h1>
+<p id="ajax_test">这是 id 为 "ajax_test" 的"p"元素</p>

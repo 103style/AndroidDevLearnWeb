@@ -156,12 +156,14 @@ window.alert("sometext");
 
 确认框
 ```
-window.confirm("sometext");
+//value = true 表示点了确认  否则表示点了取消
+var value = window.confirm("sometext");
 ```
 
 提示框
 ```
-window.prompt("sometext","defaultvalue");
+//value 表示输入的文字
+var value = window.prompt("sometext","defaultvalue");
 ```
 
 使用 `\n` 换行

@@ -179,4 +179,165 @@ $(document).ready(function() {
     $(".attr_set").click(function() {
         $(".attr_set").attr({ "class": "backtext" }).text("修改为黑色文字");
     })
+
+
+    //添加和删除元素
+    $(".append").click(function() {
+        $(".append_content").append("END!");
+    })
+
+    $(".prepend").click(function() {
+        $(".append_content").prepend("HEAD!")
+    })
+
+    $(".after").click(function() {
+        $(".append_content").after("After!");
+    })
+
+    $(".before").click(function() {
+        $(".append_content").before("Before!")
+    })
+
+    $(".remove").click(function() {
+        $(".remove").remove();
+    })
+
+    $(".emtpy").click(function() {
+        if (confirm("确认清空？")) {
+            //点击确认
+            $(".emptyDemo").empty();
+        } else {
+            //点击取消
+            console.log("取消清空。")
+        }
+    })
+
+    $(".emtpyfilter").click(function() {
+        if (confirm("确认清空所有类名为 clickButton 的元素？")) {
+            //点击确认
+            $("p").empty(".clickButton");
+        } else {
+            //点击取消
+            console.log("取消清空。")
+        }
+    })
+
+
+    //获取并设置 CSS 类
+    $(".addclass").click(function() {
+        $(".addclass").addClass("clickButton");
+    })
+
+    $(".removecalss").click(function() {
+        $(".removecalss").removeClass("clickButton");
+    })
+
+    //添加或删除clickButton类
+    $(".toggleclass").click(function() {
+        $(".toggleclass").toggleClass("clickButton");
+    })
+
+    $(".cssgetattr").click(function() {
+        $(".cssgetattr").append("background = " + $(".cssgetattr").css("background"));
+    })
+
+    //设置单个css属性
+    $(".csssetattr").click(function() {
+        $(".csssetattr").css("background", "black");
+    })
+
+    //设置多个css属性
+    $(".csssetattrs").click(function() {
+        $(".csssetattrs").css({ "background": "black", "font-size": "30px" });
+    })
+
+
+    //jQuery尺寸
+    $(".widthget").click(function() {
+        $(".widthget").append(", width = " + $(".widthget").width());
+    })
+
+    $(".heightget").click(function() {
+        $(".heightget").append(", height = " + $(".heightget").height());
+    })
+
+    $(".widthset").click(function() {
+        var value = prompt("");
+        if (value != null) {
+            $(".widthset").width(value);
+        }
+    })
+    $(".heightset").click(function() {
+        var value = prompt("");
+        if (value != null) {
+            $(".heightset").height(value);
+        }
+    })
+
+
+    $(".innerWidth").click(function() {
+        $(".innerWidth").append(", innerWidth = " + $(".innerWidth").innerWidth());
+    })
+
+    $(".innerHeight").click(function() {
+        $(".innerHeight").append(", innerHeight = " + $(".innerHeight").innerHeight());
+    })
+
+    $(".outerWidth").click(function() {
+        $(".outerWidth").append(", outerWidth = " + $(".outerWidth").outerWidth());
+    })
+
+    $(".outerHeight").click(function() {
+        $(".outerHeight").append(", outerHeight = " + $(".outerHeight").outerHeight());
+    })
+
+
+    //jQuery遍历
+    $(".parent").click(function() {
+        $(".parent").parent().css({ "border": "5px solid blue" });
+    })
+
+    $(".parents").click(function() {
+        $(".parents").parents().css({ "border": "5px solid green" });
+    })
+
+    $(".parentsUntil").click(function() {
+        $(".parentsUntil").parentsUntil("body").css({ "border": "5px solid yellow" });
+    })
+
+    $(".children").click(function() {
+        $("body").children().css({ "border": "5px solid brown" });
+    })
+
+    $(".find").click(function() {
+        $("body").find(".title").css({ "border": "5px solid lime" });
+    })
+
+
+    //AJAX
+    $(".ajax_load").click(function() {
+        $(".ajax_load_show").load("ajaxload.txt",
+            function(responseTxt, statusTxt, xhr) {
+                if (statusTxt == "success")
+                    alert("外部内容加载成功!");
+                if (statusTxt == "error")
+                    alert("Error: " + xhr.status + ": " + xhr.statusText);
+            });
+    })
+
+    $(".ajax_load_id").click(function() {
+        $(".ajax_load_id_show").load("ajaxload.txt #ajax_test",
+            function(responseTxt, statusTxt, xhr) {
+                if (statusTxt == "success")
+                    alert("外部内容加载成功! \n\n responseTxt = " + responseTxt + "\n\n statusTxt = " + statusTxt + "\n\n xhr = " + xhr);
+                if (statusTxt == "error")
+                    alert("Error: " + xhr.status + ": " + xhr.statusText);
+            });
+    })
+
+    // var testjq = $.noConflict();
+    // testjq(".noConflict_test").click(function() {
+    //     testjq(".noConflict_test_show").toggle();
+    // })
+
 });

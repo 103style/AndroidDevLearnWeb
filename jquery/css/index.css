@@ -31,3 +31,12 @@ p.animate_stop {
 .backtext {
     color: black;
 }
+
+.clickButton {
+    background: rgba(114, 109, 109, 0.856);
+    border-radius: 10px;
+    border: #eee solid 1px;
+    color: #fff;
+    padding: 10px 16px;
+    display: inline-block;
+}
