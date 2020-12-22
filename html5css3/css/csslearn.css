@@ -158,7 +158,7 @@ p {
     position: relative;
     height: 200px;
     background: pink;
-    transition: all 2s ease-in-out 1s;
+    transition: all 1s ease-in-out 0s;
 }
 
 .transition_test:hover {
@@ -167,4 +167,37 @@ p {
     margin-top: 10px;
     background: hotpink;
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+p.title {
+    color: red;
+    font-size: 20px;
+}
+
+.transformitem {
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    transform: skew();
+}
+
+.translate:hover {
+    transform: translate(10px, 10px);
+    transition: all 1s;
+}
+
+.rotate:hover {
+    transform: rotate(60deg);
+    transform-origin: left top;
+    transition: all 1s;
+}
+
+.scale:hover {
+    transform: scale(2, 2);
+    transition: all 1s;
+}
+
+.skew:hover {
+    transform: skew(20deg, 40deg);
+    transition: all 1s;
 }

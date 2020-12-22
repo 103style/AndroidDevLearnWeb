@@ -1,6 +1,11 @@
 [TOC]
 
 # CSS样式
+[参考链接: https://www.w3schools.com/css/default.asp](https://www.w3schools.com/css/default.asp)
+
+[参考链接: https://www.w3school.com.cn/css/index.asp](https://www.w3school.com.cn/css/index.asp)
+
+---
 
 ## 样式的继承
 CSS的某些样式是具有继承性的，那么什么是继承呢？继承是一种规则，它允许样式不仅应用于某个特定html标签元素，而且应用于其后代。
@@ -377,5 +382,48 @@ p.first{color:green;}
 }
 ```
 
+
+---
+
+
+## 转换 Transforms
+[CSS 2D Transforms](https://www.w3schools.com/css/css3_2dtransforms.asp)
+```
+transform -- 向元素应用 2D 或 3D 转换。
+transform-origin --	允许你改变被转换元素的位置。
+```
+
+### transform
+* `translate(x,y)` / `translateX(n)` / `translateY(n)` -- 通过 translate() 方法，元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数。
+
+  示例：`transform: translate(50px, 100px);`
+
+* `rotate()` -- 元素顺时针旋转给定的角度。允许负值，元素将逆时针旋转。
+  
+  `transform: rotate(20deg);`
+
+* `scale()` / `scaleX()` / `scaleY()` -- 元素的尺寸会增加或减少，根据给定的宽度（X 轴）和高度（Y 轴）
+
+  `transform: scale(2, 3);`
+
+* `skew()` / `skewX()` / `skewY()` -- 元素翻转给定的角度，根据给定的水平线（X 轴）和垂直线（Y 轴）。
+  
+  `transform: skew(20deg, 10deg);`
+  
+* `matrix(n,n,n,n,n,n)` -- matrix() 方法把所有 2D 转换方法组合在一起。
+
+  需要六个参数，包含数学函数，允许您：旋转、缩放、移动以及倾斜元素。
+  
+  `transform: matrix(1, -0.3, 0, 1, 0, 0);`
+
+
+### transform-origin
+语法：`transform-origin: x-axis y-axis z-axis;`
+
+* `x-axis` -- 定义视图被置于 X 轴的何处。可能的值：`left/center/right/length/%`
+
+* `y-axis` -- 定义视图被置于 Y 轴的何处。可能的值：`top/center/bottom/length/%`
+
+* `z-axis` -- 定义视图被置于 Z 轴的何处。可能的值：`length`
 
 ---
