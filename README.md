@@ -25,4 +25,6 @@
 
 * [jQuery](https://github.com/103style/AndroidDevLearnWeb/tree/master/jquery)
 
+* [AJAX](https://github.com/103style/AndroidDevLearnWeb/tree/master/AJAX)
+
 * [其他第三方工具](https://github.com/103style/AndroidDevLearnWeb/blob/master/thirdpartywebsite.md)

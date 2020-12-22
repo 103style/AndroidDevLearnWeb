@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        var ajaxHttp;
+
+        function ajaxTest(url, method, callback, async) {
+            if (window.XMLHttpRequest) { // IE7+, Firefox, Chrome, Opera, Safari 代码
+                ajaxHttp = new XMLHttpRequest();
+            } else { // IE6, IE5 代码
+                ajaxHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            ajaxHttp.onreadystatechange = callback;
+            ajaxHttp.open(method, url, async);
+            ajaxHttp.send();
+        }
+
+        function loadTestFile() {
+            ajaxTest("ajaxtestfile.txt", "GET", function() {
+                console.log("readyState = " + ajaxHttp.readyState + ", status = " + ajaxHttp.status);
+                if (ajaxHttp.readyState == 4 && ajaxHttp.status == 200) {
+                    //jQuery操作界面
+                    $("#show").text(ajaxHttp.responseText);
+                }
+            }, true);
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="myDiv">
+        <h2>使用 AJAX 获取文本内容, 日志会打印出状态变化</h2>
+    </div>
+    <button type="button" onclick="loadTestFile()">获取 ajaxtestfile.txt 的内容</button>
+
+    <p id="show"></p>
+
+</body>
+
+</html>
