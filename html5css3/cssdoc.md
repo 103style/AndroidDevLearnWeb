@@ -1,9 +1,6 @@
 [TOC]
 
 # CSS样式
-[参考链接: https://www.w3schools.com/css/default.asp](https://www.w3schools.com/css/default.asp)
-
-[参考链接: https://www.w3school.com.cn/css/index.asp](https://www.w3school.com.cn/css/index.asp)
 
 ---
 
@@ -352,78 +349,5 @@ p.first{color:green;}
     }
   </style>
   ```
-
----
-
-## 过渡效果 tansition
-
-语法 `transition: attr time interpolator delay`。
-* `attr` - 要过渡的属性（`all` 表示全部）
-* `time` - 用时(s) 
-* `interpolator` - 过渡速度的变化曲线（ease/ease-in/ease-out/ease-in-out ） 
-* `delay` - 触发的延时(s)
-
-示例
-```
-.transition_test {
-    width: 400px;
-    position: relative;
-    height: 200px;
-    background: pink;
-    transition: all 2s ease-in-out 1s;
-}
-
-.transition_test:hover {
-    width: 800px;
-    height: 400px;
-    margin-top: 10px;
-    background: hotpink;
-    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-}
-```
-
-
----
-
-
-## 转换 Transforms
-[CSS 2D Transforms](https://www.w3schools.com/css/css3_2dtransforms.asp)
-```
-transform -- 向元素应用 2D 或 3D 转换。
-transform-origin --	允许你改变被转换元素的位置。
-```
-
-### transform
-* `translate(x,y)` / `translateX(n)` / `translateY(n)` -- 通过 translate() 方法，元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数。
-
-  示例：`transform: translate(50px, 100px);`
-
-* `rotate()` -- 元素顺时针旋转给定的角度。允许负值，元素将逆时针旋转。
-  
-  `transform: rotate(20deg);`
-
-* `scale()` / `scaleX()` / `scaleY()` -- 元素的尺寸会增加或减少，根据给定的宽度（X 轴）和高度（Y 轴）
-
-  `transform: scale(2, 3);`
-
-* `skew()` / `skewX()` / `skewY()` -- 元素翻转给定的角度，根据给定的水平线（X 轴）和垂直线（Y 轴）。
-  
-  `transform: skew(20deg, 10deg);`
-  
-* `matrix(n,n,n,n,n,n)` -- matrix() 方法把所有 2D 转换方法组合在一起。
-
-  需要六个参数，包含数学函数，允许您：旋转、缩放、移动以及倾斜元素。
-  
-  `transform: matrix(1, -0.3, 0, 1, 0, 0);`
-
-
-### transform-origin
-语法：`transform-origin: x-axis y-axis z-axis;`
-
-* `x-axis` -- 定义视图被置于 X 轴的何处。可能的值：`left/center/right/length/%`
-
-* `y-axis` -- 定义视图被置于 Y 轴的何处。可能的值：`top/center/bottom/length/%`
-
-* `z-axis` -- 定义视图被置于 Z 轴的何处。可能的值：`length`
 
 ---

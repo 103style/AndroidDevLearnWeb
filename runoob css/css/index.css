@@ -1,0 +1,59 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+p.title {
+    color: red;
+    font-size: 20px;
+    padding: 10px 10px 0;
+}
+
+
+/* transition过渡效果 */
+
+.transition_test {
+    padding: 10px;
+    width: 500px;
+    height: 200px;
+    position: relative;
+    background: pink;
+    transition: all 1s ease-in-out 0s;
+    margin: 10px 30px;
+}
+
+.transition_test:hover {
+    width: 600px;
+    height: 300px;
+    margin-top: 10px;
+    background: hotpink;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.transformitem {
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    transform: skew();
+}
+
+.translate:hover {
+    transform: translate(10px, 10px);
+    transition: all 1s;
+}
+
+.rotate:hover {
+    transform: rotate(60deg);
+    transform-origin: left top;
+    transition: all 1s;
+}
+
+.scale:hover {
+    transform: scale(2, 2);
+    transition: all 1s;
+}
+
+.skew:hover {
+    transform: skew(20deg, 40deg);
+    transition: all 1s;
+}
