@@ -728,6 +728,7 @@ console.log("程序执行结束");
 
 
 ## 常用工具
+[https://www.runoob.com/nodejs/nodejs-util.html](https://www.runoob.com/nodejs/nodejs-util.html)
 
 ### util
 util 是一个Node.js 核心模块。 `const util = require('util');`
@@ -752,5 +753,137 @@ util 是一个Node.js 核心模块。 `const util = require('util');`
 
 
 * `util.inherits(constructor, superConstructor)` 是一个实现对象间原型继承的函数。
+  
+  JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有提供对象继承的语言级别特性，而是通过原型复制来实现的。
+
+  示例 : [util_inherits_demo.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/util_inherits_demo.js)
+
+  **注意：Sub 仅仅继承了Base 在原型中定义的函数，而构造函数内部创造的 base 属 性和 sayHello 函数都没有被 Sub 继承。**
+
+* `util.inspect(object,[showHidden],[depth],[colors])` 是一个将任意对象转换 为字符串的方法，通常用于调试和错误输出。它至少接受一个参数 object，即要转换的对象。
+  * `object` -- 要转换的对象。
+  * `showHidden `  -- 输出更多隐藏信息。
+  * `depth` -- 表示最大递归的层数
+  * `colors` -- 如果 `colors` 值为 `true`，输出格式将会以 `ANSI` 颜色编码，通常用于在终端显示更漂亮 的效果。
+
+  ```
+  var util = require('util');
+  
+  function Person() {
+      this.name = 'byvoid';
+      this.toString = function() {
+          return this.name;
+      };
+  }
+  var obj = new Person();
+  console.log(util.inspect(obj));
+  console.log(util.inspect(obj, true));
+  ```
+
+* `util.isArray(object)` -- 如果给定的参数 "object" 是一个数组返回 true，否则返回 false。
+
+* `util.isRegExp(object)` -- 如果给定的参数 "object" 是一个正则表达式返回true，否则返回false。
+
+* `util.isDate(object)` -- 如果给定的参数 "object" 是一个日期返回true，否则返回false。
+
+  
+---
+
+## 文件系统
+Node.js 提供一组类似 UNIX（POSIX）标准的文件操作API。 Node 导入文件系统模块(fs)语法为： `var fs = require("fs")`。
+
+---
+
+### 异步和同步
+Node.js 文件系统（fs 模块）中的方法均有异步和同步版本，例如读取文件内容的函数有异步的 `fs.readFile()` 和同步的 `fs.readFileSync()`。
+
+示例 : [fileSyncAndAsync.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/fileSyncAndAsync.js)
+
+---
+
+### 打开文件
+语法 ： `fs.open(path, flags[, mode], callback)`
+* `path` - 文件的路径。
+* `flags` - 文件打开的行为。具体值详见下文。
+* `mode` - 设置文件模式(权限)，文件创建默认权限为 0666(可读，可写)。
+* `callback` - 回调函数，带有两个参数如：`callback(err, fd)`。
+
+`flags`取值：
+* `r`  --  以读取模式打开文件。如果文件不存在抛出异常。
+* `r+`  --  以读写模式打开文件。如果文件不存在抛出异常。
+* `rs`  --  以同步的方式读取文件。
+* `rs+`  --  以同步的方式读取和写入文件。
+* `w`  --  以写入模式打开文件，如果文件不存在则创建。
+* `wx`  --  类似 'w'，但是如果文件路径存在，则文件写入失败。
+* `w+`  --  以读写模式打开文件，如果文件不存在则创建。
+* `wx+`  --  类似 'w+'， 但是如果文件路径存在，则文件读写失败。
+* `a`  --  以追加模式打开文件，如果文件不存在则创建。
+* `ax`  --  类似 'a'， 但是如果文件路径存在，则文件追加失败。
+* `a+`  --  以读取追加模式打开文件，如果文件不存在则创建。
+* `ax+`  --  类似 'a+'， 但是如果文件路径存在，则文件读取追加失败。
+
+---
+
+### 获取文件信息
+异步模式获取文件信息的语法格式：`fs.stat(path, callback)`
+* `path` - 文件路径。
+* `callback` - 回调函数，带有两个参数如：(err, stats), stats 是 fs.Stats 对象。
+
+
+`stats`方法：
+* `stats.isFile()`  -- 如果是文件返回 true，否则返回 false。
+* `stats.isDirectory()`  -- 如果是目录返回 true，否则返回 false。
+* `stats.isBlockDevice()`  -- 如果是块设备返回 true，否则返回 false。
+* `stats.isCharacterDevice()`  -- 如果是字符设备返回 true，否则返回 false。
+* `stats.isSymbolicLink()`  -- 如果是软链接返回 true，否则返回 false。
+* `stats.isFIFO()`  -- 如果是FIFO，返回true，否则返回 false。FIFO是UNIX中的一种特殊类型的命令管道。
+* `stats.isSocket()`  -- 如果是 Socket 返回 true，否则返回 false。
+
+---
+
+### 写入文件
+异步写入语法：`fs.writeFile(file, data[, options], callback)`
+* `file` - 文件名或文件描述符。
+* `data` - 要写入文件的数据，可以是 String(字符串) 或 Buffer(缓冲) 对象。
+* `options` - 该参数是一个对象，包含 {encoding, mode, flag}。默认编码为 utf8, 模式为 0666 ， flag 为 'w'
+* `callback` - 回调函数，回调函数只包含错误信息参数(err)，在写入失败时返回。
+
+---
+
+### 读取文件
+异步读取语法：`fs.read(fd, buffer, offset, length, position, callback)`
+* `fd`  --  通过 fs.open() 方法返回的文件描述符。
+* `buffer`  --  数据写入的缓冲区。
+* `offset`  --  缓冲区写入的写入偏移量。
+* `length`  --  要从文件中读取的字节数。
+* `position`  --  文件读取的起始位置，如果 position 的值为 null，则会从当前文件指针的位置读取。
+* `callback`  --  回调函数，有三个参数err, bytesRead, buffer，err 为错误信息， bytesRead 表示读取的字节数，buffer 为缓冲区对象。
+
+---
+
+
+### 关闭文件
+异步关闭语法：`fs.close(fd, callback)`
+* `fd`  --  通过 fs.open() 方法返回的文件描述符。
+* `callback`  --  回调函数，没有参数。
+
+---
+
+### 截取文件
+异步截取语法：`fs.ftruncate(fd, len, callback)`
+* `fd`  --  通过 fs.open() 方法返回的文件描述符。
+* `len`  --  文件内容截取的长度。
+* `callback`  --  回调函数，没有参数。
+
+---
+
+### 删除文件
+异步删除语法： `fs.unlink(path, callback)`
+* `path`  --  文件路径。
+* `callback`  --  回调函数，没有参数。
+
+---
+
+示例 : [fileMethodTest.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/fileMethodTest.js)
 
 ---
