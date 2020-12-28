@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Get&Post Test</title>
+
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./js/get&post_client.js"></script>
+</head>
+
+<body>
+    <div>
+        <div>
+            <span>网站名：</span> <span id="website_name"></span>
+        </div>
+        <div>
+            <span>网址：</span> <span id="website_url"></span>
+        </div>
+        <div>
+            <span>作者：</span> <span id="website_author"></span>
+        </div>
+
+
+        <br>
+
+        <div>
+            <form method="post" action="http://localhost:5000">
+                <span>网站名：</span> <input type="text" id="name" title="网站名" />
+                <br>
+                <span>网址：</span> <input type="text" id="url" title="网站名" />
+                <br>
+                <span>作者：</span> <input type="text" id="author" title="网站名" />
+                <br>
+                <input type="submit">
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>

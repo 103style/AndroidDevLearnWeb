@@ -3,7 +3,7 @@ var util = require("util")
 
 var path = "../resources/demo.txt";
 
-fs.open(path, 'r', '0666', function(err, fd) {
+fs.open(path, 'a', '0666', function(err, fd) {
     if (err)
         return console.log("fs.open err, err = " + err);
 
@@ -54,8 +54,8 @@ fs.writeFile(path, '103style.top\n103style.github.io\n103Tech', function(err) {
 
 
 
-
 function ftruncateTest() {
+    //打开文件
     fs.open(path, 'r+', '0666', function(err, fd) {
         if (err)
             return console.log("fs.open err, err = " + err);
@@ -63,17 +63,19 @@ function ftruncateTest() {
         console.log("fs.open success, fd = " + fd);
 
         console.log("fs.ftruncate start.");
+        //截取文件
         fs.ftruncate(fd, 10, function(err) {
             if (err) return console.log("fs.ftruncate err = " + err);
 
             var buf = new Buffer.alloc(1024);
+            //读取文件
             fs.read(fd, buf, 0, buf.length, 0, function(err, bytes) {
                 if (err) return console.log("fs.read  err = " + err);
 
                 if (bytes > 0) {
                     console.log("fs.read fs.ftruncate = " + buf.slice(0, bytes).toString());
                 }
-
+                //关闭文件
                 fs.close(fd, function(err) {
                     if (err) {
                         console.log(err);
@@ -82,7 +84,7 @@ function ftruncateTest() {
 
                     console.log("fs.ftruncate finish.\n");
 
-                    closeTest();
+                    deleteTest();
                 });
             });
         })
@@ -90,10 +92,54 @@ function ftruncateTest() {
 }
 
 
-function closeTest() {
+//删除文件
+function deleteTest() {
     fs.unlink(path, function() {
         console.log("fs.unlink success.");
 
         console.log("fs.unlink finish.\n");
+
+
+        dirTest();
+    })
+}
+
+var mDir = "../mkdirtest";
+
+function dirTest() {
+    //创建目录
+    fs.mkdir(mDir, { recursive: true }, function(err) {
+        if (err) return console.log("创建目录 " + mDir + " 失败， err = " + err);
+
+        console.log("创建目录 " + mDir + " 成功");
+
+        readDir();
+    })
+}
+
+//读取目录
+function readDir() {
+
+    fs.readdir(mDir, function(err, files) {
+        if (err) return console.log("读取目录 " + mDir + " 失败， err = " + err);
+
+        console.log(mDir + " 目录下文件总数为：" + files.length);
+        files.forEach(function(file) {
+            console.log(file);
+        });
+
+        console.log("读取目录 " + mDir + " 成功。");
+
+        deleteDir();
+    });
+}
+
+//删除目录
+function deleteDir() {
+    fs.rmdir(mDir, function(err) {
+        if (err) return console.log("删除目录 " + mDir + " 失败， err = " + err);
+
+
+        console.log("删除目录 " + mDir + " 成功。");
     })
 }

@@ -790,6 +790,11 @@ util 是一个Node.js 核心模块。 `const util = require('util');`
 ---
 
 ## 文件系统
+
+[菜鸟教程](https://www.runoob.com/nodejs/nodejs-fs.html)
+
+[w3c](https://www.w3schools.com/nodejs/nodejs_filesystem.asp)
+
 Node.js 提供一组类似 UNIX（POSIX）标准的文件操作API。 Node 导入文件系统模块(fs)语法为： `var fs = require("fs")`。
 
 ---
@@ -884,6 +889,122 @@ Node.js 文件系统（fs 模块）中的方法均有异步和同步版本，例
 
 ---
 
+### 创建目录
+异步语法：`fs.mkdir(path[, options], callback)`
+* `path` - 文件路径。
+
+* `options` 参数可以是：
+  * `recursive` - 是否以递归的方式创建目录，默认为 false。
+  * `mode` - 设置目录权限，默认为 0777。
+  
+* `callback` - 回调函数，没有参数。
+
+`fs.mkdir(path,callback)` 创建目录，如果目录存在会报错，可以添加 `options` 参数 `{ recursive: true }`.
+
+---
+
+### 读取目录
+异步语法：`fs.readdir(path, callback)`
+* `path` - 文件路径。
+* `callback` - 回调函数，回调函数带有两个参数err, files，err 为错误信息，files 为 目录下的文件数组列表。
+
+---
+
+### 删除目录
+异步语法：`fs.rmdir(path, callback)`
+* `path` - 文件路径。
+
+* `callback` - 回调函数，没有参数。
+
+
+---
+
+[菜鸟教程 文件模块方法参考手册](https://www.runoob.com/nodejs/nodejs-fs.html)
+
+[w3c 文件模块方法参考手册](https://www.w3schools.com/nodejs/nodejs_filesystem.asp)
+
 示例 : [fileMethodTest.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/fileMethodTest.js)
 
 ---
+
+## GET/POST请求
+
+### 获取GET请求内容
+由于GET请求直接被嵌入在路径中，URL是完整的请求路径，包括了?后面的部分，因此你可以手动解析后面的内容作为GET请求的参数。
+
+node.js 中 `url` 模块中的 `parse` 函数提供了这个功能。
+```
+var http = require("http");
+var url = require("url");
+var util = require("util");
+
+http.createServer(function(req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end(util.inspect(url.parse(req.url, true)));
+
+}).listen(3000);
+```
+
+执行代码之后，在浏览器访问 `localhost:3000/?name=103Tech&url=103style.top`,输出结果：
+```
+Url {
+  protocol: null,
+  slashes: null,
+  auth: null,
+  host: null,
+  port: null,
+  hostname: null,
+  hash: null,
+  search: '?name=103Tech&url=103style.top',
+  query: [Object: null prototype] { name: '103Tech', url: '103style.top' },
+  pathname: '/',
+  path: '/?name=103Tech&url=103style.top',
+  href: '/?name=103Tech&url=103style.top'
+}
+```
+
+---
+
+### 获取 URL 的参数
+通过 `var params = url.parse(req.url, true).query;`解析出参数，然后通过 `params.name` 和 `params.url` 获取链接 `localhost:3000/?name=103Tech&url=103style.top` 的请求参数。
+```
+var http = require("http");
+var url = require("url");
+var util = require("util");
+
+http.createServer(function(req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+    //获取get请求后面带的参数
+    var params = url.parse(req.url, true).query;
+    res.write("网站名：" + params.name);
+    console.log(params.name);
+    res.write("\n");
+    res.write("网站url = " + params.url);
+    console.log(params.url);
+    res.end();
+}).listen(3000);
+```
+
+输出结果：
+```
+网站名：103Tech
+网站url = 103style.top
+```
+
+
+示例 : [get.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/get.js)
+
+
+---
+
+### 获取 POST 请求内容
+POST 请求的内容全部的都在请求体中，http.ServerRequest 并没有一个属性内容为请求体，原因是等待请求体传输可能是一件耗时的工作。
+
+比如上传文件，而很多时候我们可能并不需要理会请求体的内容，恶意的POST请求会大大消耗服务器的资源，所以 node.js 默认是不会解析请求体的，当你需要的时候，需要手动来做。
+
+示例 : [post.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/post.js)
+
+
+---
+
+
