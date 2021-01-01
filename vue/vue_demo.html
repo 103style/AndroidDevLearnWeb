@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue起步</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .class1 {
+            color: pink;
+            background: black;
+        }
+        
+        .item {
+            background-color: #eee;
+            padding: 8px 16px;
+            margin-bottom: 10px;
+        }
+        
+        .vif {
+            height: 32px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Vue语法</h1>
+    </center>
+    <div id="vue_step_1">
+        <div class="item">
+            <p> 使用 "{{xxx}" 进行文本插值 </p>
+            <h3>Vue读取的 site 字段 = {{site}}</h3>
+            <h3>Vue读取的 url 字段 = {{url}}</h3>
+            <h3>Vue读取的方法返回文本：{{info()}}</h3>
+        </div>
+
+        <div class="item">
+            <p>使用 "v-html" 插入html代码</p>
+            <div v-html='htmlstring'></div>
+        </div>
+
+        <div class="item">
+            <p>"v-bind" 绑定属性</p>
+            <div style="display: inline-block;" v-bind:class="{'class1': use}">
+                <label for="r1">"v-bind:class 指令"  修改颜色</label><input type="checkbox" v-model="use" id="r1">
+            </div>
+
+        </div>
+
+        <div class="item">
+            <p>支持JavaScript 表达式</p>
+            <div>
+                5 + 5 = {{5 + 5}} &nbsp; &nbsp; {{use ? "OK" : "NO"}} &nbsp; &nbsp; string函数： "{{ stringtest.split('').reverse().join('') }}"
+            </div>
+        </div>
+
+        <div class="item">
+            <p>带有 "v-" 前缀的指令</p>
+            "v-if" 显示或者隐藏切换<input type="checkbox" v-model="show">
+            <p v-if="show">通过 "v-if" 判断show属性是否显示</p>
+
+            <p>通过 "v-for" 循环添加</p>
+            <ol>
+                <li v-for='todo in todos'>
+                    {{todo.text}}
+                </li>
+            </ol>
+        </div>
+
+        <div class="item">
+            <p>通过 "v-bind" 来响应地更新 HTML 属性</p>
+            <a v-bind:href="url">103Tech</a>
+        </div>
+
+
+        <div class="item">
+            <p>在 input 输入框中我们可以使用 "v-model" 指令来实现双向数据绑定：</p>
+            <p>后面和文字会和输入框的文字绑定：{{intputstring}}</p>
+            <input v-model="intputstring">
+        </div>
+
+
+        <div class="item">
+            <p>使用自定义过滤器 替换 "{{filterString}}"</p>
+            <div>
+                替换结果： {{ filterString | capitalize }}
+            </div>
+        </div>
+
+
+        <div class="item">
+            <p>Vue条件语句</p>
+            <div><span>试试输入"1/2/3/other"： </span> <input v-model="color"></div>
+            <div class="vif" v-if='color === "1"' style="background: red;"></div>
+            <div class="vif" v-else-if='color === "2"' style="background: green;"></div>
+            <div class="vif" v-else-if='color === "3"' style="background: blue;"></div>
+            <div class="vif" v-else style="background: pink;"></div>
+        </div>
+
+
+        <div class="item">
+            <p>Vue循环语句</p>
+
+            <p>v-for='todo in todos'</p>
+            <ol>
+                <li v-for='todo in todos'>
+                    {{todo.text}}
+                </li>
+            </ol>
+            <hr>
+            <p>v-for='value in object'</p>
+            <ol>
+                <li v-for='value in object'>
+                    {{value}}
+                </li>
+            </ol>
+            <hr>
+            <p>v-for='(a, b, c) in object' 依次为 value/key/index</p>
+            <ol>
+                <li v-for='(a, b, c) in object'>
+                    {{ a }}. {{ b }} : {{ c }}
+                </li>
+            </ol>
+            <hr>
+            <p>v-for='n in 5'</p>
+            <ol>
+                <li v-for='n in 5'>
+                    {{n}}
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            //DOM元素的id 匹配对应的元素
+            el: "#vue_step_1",
+            data: {
+                site: '103Tech',
+                url: 'http://103style.top',
+                stringtest: "我被反着写了？？？",
+                htmlstring: '<h3 style="color:red">我是通过v-html 属性配置的 html代码</h3>',
+                use: false,
+                show: true,
+                intputstring: '试试更改我',
+                todos: [{
+                    text: 'a'
+                }, {
+                    text: 'bb'
+                }, {
+                    text: 'cccc'
+                }, {
+                    text: 'dddd'
+                }, ],
+                filterString: 'this is a filter string.',
+                color: '1',
+                object: {
+                    name: '103style',
+                    wx: '103Tech',
+                    web: '103style.top'
+                }
+            },
+            methods: {
+                info: function() {
+                    return this.site + "----" + this.url;
+                }
+            },
+            filters: {
+                capitalize: function(value) {
+                    if (!value) return '';
+                    value = value.toString();
+                    var arr = value.split(' ');
+                    var res = '';
+                    for (var i = 0; i < arr.length; i++) {
+                        res += arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+                        if (i + 1 != arr.length) res += ' ';
+                    }
+                    return res;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
