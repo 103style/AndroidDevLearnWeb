@@ -16,6 +16,8 @@ Express 框架核心特性：
 ## 参考链接
 * [https://www.runoob.com/nodejs/nodejs-express-framework.html](https://www.runoob.com/nodejs/nodejs-express-framework.html)
 
+* [Express官网](http://expressjs.com/)
+
 ---
 
 ## 安装
@@ -100,5 +102,91 @@ app.use('/shared', express.static('../../nodejs'));
 ```
 
 然后就可以访问： `http://127.0.0.1:8081/shared/readme.md`、`http://127.0.0.1:8081/shared/index.html` 等文件了。
+
+
+[express_static.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/express_static.js)
+
+---
+
+
+## Get/Post/文件上传/Cookie管理
+
+* [express_exercise_server.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/express_exercise_server.js)
+
+* [express_exercise_client.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/express_exercise_client.js)
+
+* [express_exercise.html](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/express_exercise.html)
+
+### [express_exercise_server.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/express_exercise_server.js) 中 get请求
+```
+app.get('/get', function(req, res) {
+    var response = {
+        "wx": wx,
+        "web": web
+    };
+    var jsonstring = JSON.stringify(response);
+    console.log("get response = " + jsonstring)
+    res.end(jsonstring);
+});
+```
+
+
+### [express_exercise_server.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/express_exercise_server.js) 中 post请求:
+```
+app.post('/post', urlencodedParser, function(req, res) {
+    var response = {
+        "wx": req.body.wx,
+        "web": req.body.web
+    };
+    var jsonstring = JSON.stringify(response);
+    console.log("post response = " + jsonstring)
+    res.end(jsonstring);
+});
+
+```
+
+### 文件上传
+```
+app.post('/file_upload', function(req, res) {
+
+    var file = req.files[0];
+    console.log(file); // 上传的文件信息
+
+    var des_file = dir +file.originalname;
+
+    fs.readFile(file.path, function(err, data) {
+
+        fs.writeFile(des_file, data, function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                response = {
+                    message: 'File uploaded successfully',
+                    filename: req.files[0].originalname
+                };
+            }
+            var jsonstring = JSON.stringify(response);
+            console.log(jsonstring);
+            res.end(jsonstring);
+        });
+    });
+})
+```
+
+
+### Cookie 管理
+```
+var express = require('express');
+var app = express();
+var cookieParser = require('cookie-parser')
+var util = require('util');
+app.use(cookieParser())
+
+app.get('/', function(req, res) {
+    console.log("Cookies: " + util.inspect(req.cookies));
+});
+
+```
+
 
 ---

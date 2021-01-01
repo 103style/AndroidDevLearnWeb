@@ -1007,7 +1007,7 @@ POST 请求的内容全部的都在请求体中，http.ServerRequest 并没有�
 
 ---
 
-### 工具模块
+## 工具模块
 * [OS 模块](https://www.runoob.com/nodejs/nodejs-os-module.html)
 
 * [Path 模块](https://www.runoob.com/nodejs/nodejs-path-module.html)
@@ -1020,7 +1020,7 @@ POST 请求的内容全部的都在请求体中，http.ServerRequest 并没有�
 
 ---
 
-### Web 模块
+## Web 模块
 * [web_server.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/web_server.js)
 
 * [web_client.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/web_client.js)
@@ -1028,7 +1028,82 @@ POST 请求的内容全部的都在请求体中，http.ServerRequest 并没有�
 
 ---
 
-### Express
+## Express
 [express.md](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/express.md)
+
+---
+
+## [Node.js 多进程](https://www.runoob.com/nodejs/nodejs-process.html)
+
+---
+
+## [Node.js JXcore 打包](https://www.runoob.com/nodejs/nodejs-jxcore-packaging.html)
+
+---
+
+
+## [Node.js 连接 MySQL](https://www.runoob.com/nodejs/nodejs-mysql.html)
+
+安装驱动 `npm install -g mysql`
+
+```
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host: 'localhost', //主机地址
+    user: 'root', //用户名
+    password: '123456', //密码
+    database: 'test' //数据库名
+});
+
+connection.connect();
+
+//查询
+connection.query('SELECT 1 + 1 AS solution', function(error, results, fields) {
+    if (error) throw error;
+    console.log('The solution is: ', results[0].solution);
+});
+
+//插入数据
+var addSql = 'INSERT INTO websites(Id,name,url,alexa,country) VALUES(0,?,?,?,?)';
+var addSqlParams = ['103Tech', 'https://103style.top','123', 'CN'];
+connection.query(addSql,addSqlParams,function (err, result) {});
+
+//更新数据
+var modSql = 'UPDATE websites SET name = ? WHERE Id = ?';
+var modSqlParams = ['103style', 6];
+connection.query(modSql, modSqlParams, function(err, result){});
+
+
+//删除数据
+var delSql = 'DELETE FROM websites where id=6';
+connection.query(delSql, function(err, result){});
+```
+
+
+---
+
+
+## [Node.js 连接 MongoDB](https://www.runoob.com/nodejs/nodejs-mongodb.html)
+安装驱动 `npm install -g mongodb`
+
+```
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/103style";
+ 
+//建立链接
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  console.log("数据库已创建!");
+
+  var dbase = db.db("103Tech");
+  dbase.createCollection('site', function (err, res) {
+      if (err) throw err;
+      console.log("创建集合!");
+      db.close();
+  });
+});
+```
+
+[mongodb.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/mongodb.js)
 
 ---

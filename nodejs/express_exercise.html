@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Exercise</title>
+
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./js/express_exercise_client.js"></script>
+    <style>
+        div.item {
+            border-bottom: 1px solid black;
+            padding: 16px;
+        }
+        
+        a {
+            color: rgb(136, 113, 113);
+            padding: 4px;
+            display: block;
+            margin: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="item">
+            <p>get请求获取数据：</p>
+
+            <p> 微信公众号: <span id="wx"></span> </p>
+            <p> 博客地址: <span id="web"></span> </p>
+        </div>
+
+        <div class="item">
+            <p>post请求更新数据：</p>
+
+            <div>
+                公众号： <input type="text" id="wxedit">
+                <br> 博客地址： <input type="text" id="webedit">
+                <br> <input type="submit" value="更新" onclick="post()">
+            </div>
+        </div>
+
+
+        <!-- <div class="item">
+            <p>文件上传：</p>
+
+        </div> -->
+
+
+        <!-- <div class="item">
+            <p>Cookie管理：</p>
+
+        </div> -->
+
+
+        <div class="item">
+            源码链接:
+            <a href="https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/express_exercise.html " target="_blank ">express_exercise.html</a>
+            <a href="https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/express_exercise_server.js " target="_blank ">express_exercise_server.js</a>
+            <a href="https://github.com/103style/AndroidDevLearnWeb/blob/master/nodejs/js/express_exercise_client.js " target="_blank ">express_exercise_client.js</a>
+        </div>
+    </div>
+</body>
+
+</html>
