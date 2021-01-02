@@ -4,12 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue起步</title>
+    <title>Vue语法</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <style>
         .class1 {
             color: pink;
             background: black;
+        }
+        
+        .title {
+            font-size: 20px;
+            color: red;
+            font-weight: bold;
         }
         
         .item {
@@ -29,21 +35,21 @@
     <center>
         <h1>Vue语法</h1>
     </center>
-    <div id="vue_step_1">
+    <div id="vue_learn">
         <div class="item">
-            <p> 使用 "{{xxx}" 进行文本插值 </p>
+            <p class="title"> 使用 "{{xxx}" 进行文本插值 </p>
             <h3>Vue读取的 site 字段 = {{site}}</h3>
             <h3>Vue读取的 url 字段 = {{url}}</h3>
             <h3>Vue读取的方法返回文本：{{info()}}</h3>
         </div>
 
         <div class="item">
-            <p>使用 "v-html" 插入html代码</p>
-            <div v-html='htmlstring'></div>
+            <p class="title" 使用 "v-html" 插入html代码</p>
+                <div v-html='htmlstring'></div>
         </div>
 
         <div class="item">
-            <p>"v-bind" 绑定属性</p>
+            <p class="title">"v-bind" 绑定属性</p>
             <div style="display: inline-block;" v-bind:class="{'class1': use}">
                 <label for="r1">"v-bind:class 指令"  修改颜色</label><input type="checkbox" v-model="use" id="r1">
             </div>
@@ -51,14 +57,14 @@
         </div>
 
         <div class="item">
-            <p>支持JavaScript 表达式</p>
+            <p class="title">支持JavaScript 表达式</p>
             <div>
                 5 + 5 = {{5 + 5}} &nbsp; &nbsp; {{use ? "OK" : "NO"}} &nbsp; &nbsp; string函数： "{{ stringtest.split('').reverse().join('') }}"
             </div>
         </div>
 
         <div class="item">
-            <p>带有 "v-" 前缀的指令</p>
+            <p class="title">带有 "v-" 前缀的指令</p>
             "v-if" 显示或者隐藏切换<input type="checkbox" v-model="show">
             <p v-if="show">通过 "v-if" 判断show属性是否显示</p>
 
@@ -71,20 +77,20 @@
         </div>
 
         <div class="item">
-            <p>通过 "v-bind" 来响应地更新 HTML 属性</p>
+            <p class="title">通过 "v-bind" 来响应地更新 HTML 属性</p>
             <a v-bind:href="url">103Tech</a>
         </div>
 
 
         <div class="item">
-            <p>在 input 输入框中我们可以使用 "v-model" 指令来实现双向数据绑定：</p>
+            <p class="title">在 input 输入框中我们可以使用 "v-model" 指令来实现双向数据绑定：</p>
             <p>后面和文字会和输入框的文字绑定：{{intputstring}}</p>
             <input v-model="intputstring">
         </div>
 
 
         <div class="item">
-            <p>使用自定义过滤器 替换 "{{filterString}}"</p>
+            <p class="title">使用自定义过滤器 替换 "{{filterString}}"</p>
             <div>
                 替换结果： {{ filterString | capitalize }}
             </div>
@@ -92,7 +98,7 @@
 
 
         <div class="item">
-            <p>Vue条件语句</p>
+            <p class="title">Vue条件语句</p>
             <div><span>试试输入"1/2/3/other"： </span> <input v-model="color"></div>
             <div class="vif" v-if='color === "1"' style="background: red;"></div>
             <div class="vif" v-else-if='color === "2"' style="background: green;"></div>
@@ -102,7 +108,7 @@
 
 
         <div class="item">
-            <p>Vue循环语句</p>
+            <p class="title">Vue循环语句</p>
 
             <p>v-for='todo in todos'</p>
             <ol>
@@ -132,12 +138,144 @@
                 </li>
             </ol>
         </div>
+
+
+        <div class="item">
+            <p class="title">监听属性变化</p>
+
+            <p>事件处理器示例</p>
+            <span style="font-size:20px;">计数器: {{ counter }}</span>
+            <button @click="counter++" style="font-size:20px;">点我</button>
+
+            <div>
+                <p>转换示例：</p>
+                千米 : <input type="text" v-model="kilometers"> 米 : <input type="text" v-model="meters">
+
+                <div id="change_info" style="margin: 10px 0;"></div>
+            </div>
+
+        </div>
+
+
+        <div class="item">
+            <p class="title">事件处理器示例</p>
+            <button v-on:click="say('Hello World.')">点击内联 JavaScript 语句方法调用  弹框</button>
+
+        </div>
+
+
+        <div class="item">
+            <p class="title">按键修饰符</p>
+
+            <div>v-on: 按 alt+c 清空输入： <input type="text" placeholder="按 alt + c 清空输入" v-on:keyup.alt.67="clear">
+            </div>
+
+            <div style="margin: 16px 0;">选中输入框，点击相关的按键 <input type="text" placeholder="按键" v-on:keyup="showKey"></div>
+        </div>
+
+
+
+        <div class="item">
+            <p class="title">Vue.js 表单</p>
+
+            <p>input 元素：</p>
+            <input v-model="intputMsg" placeholder="编辑我……">
+            <p>消息是: {{ intputMsg }}</p>
+
+            <hr>
+
+            <p>textarea 元素：</p>
+            <p style="white-space: pre">{{ intputMsgs }}</p>
+            <textarea v-model="intputMsgs" placeholder="多行文本输入……"></textarea>
+
+            <hr>
+
+            <p>复选框</p>
+            <input type="checkbox" id="checkbox" v-model="checked">
+            <label for="checkbox"> {{checked}}</label>
+
+            <hr>
+            <p>多个复选框, 选中的内容是 {{checkedNames}}</p>
+            <input type="checkbox" id="103tech" value="103Tech" v-model='checkedNames'>
+            <label for="103tech">103Tech</label>
+            <input type="checkbox" id="google" value="Google" v-model='checkedNames'>
+            <label for="google">Google</label>
+            <input type="checkbox" id="apple" value="Apple" v-model='checkedNames'>
+            <label for="apple">Apple</label>
+
+
+            <hr>
+            <p>单选 选中的是 {{radiocheck}}</p>
+            <input type="radio" id="radio1" value="103Tech" v-model='radiocheck'>
+            <label for="radio1">103Tech</label>
+            <input type="radio" id="radio2" value="103style" v-model='radiocheck'>
+            <label for="radio2">103style</label>
+
+            <hr>
+
+            <p>select 列表 选中的是 {{selected}}</p>
+            <select name="company" v-model='selected'>
+                <option value="">选择一个公司：</option>
+                <option value="Tencent">Tencent</option>
+                <option value="Alibaba">Alibaba</option>
+                <option value="JD">JD</option>    
+            </select>
+
+            <hr>
+
+            <p> lazy/trim/number 修饰符, lazy响应change事件，number转换失败就返回原值</p>
+            <p> 输入框中的文字是：{{lazytest}}</p>
+            <input v-model.lazy.trim.number="lazytest" placeholder="修饰符测试">
+            <hr>
+        </div>
+
+
+        <div class="item">
+            <p class="title">组件</p>
+
+            <!-- 全局组件 -->
+            <global></global>
+
+            <!-- 局部组件 -->
+            <partion></partion>
+
+            <!-- prop组件 -->
+            <proptest propmsg="Hello Prop!"></proptest>
+
+            <hr>
+            <!-- 动态prop -->
+            <div>
+                父组件内容： <input v-model="parentMsg">
+                <br> prop组件内容：
+                <proptest v-bind:propmsg='parentMsg'></proptest>
+            </div>
+        </div>
+
+        <footer style="height: 100px;"></footer>
+
     </div>
 
     <script type="text/javascript">
+        //全局组件
+        Vue.component('global', {
+            template: '<h2>全局组件 global标签</h2>'
+        })
+
+        //局部组件
+        var Child = {
+            template: '<h2>局部组件 partion标签</h2>'
+        }
+
+        //prop组件
+        Vue.component('proptest', {
+            //申明prop
+            props: ['propmsg'],
+            template: '<span>{{ propmsg }}</span>'
+        })
+
         var vm = new Vue({
             //DOM元素的id 匹配对应的元素
-            el: "#vue_step_1",
+            el: "#vue_learn",
             data: {
                 site: '103Tech',
                 url: 'http://103style.top',
@@ -161,11 +299,32 @@
                     name: '103style',
                     wx: '103Tech',
                     web: '103style.top'
-                }
+                },
+                counter: 0,
+                kilometers: 0,
+                meters: 0,
+                intputMsg: '103Tech',
+                intputMsgs: '103Tech\r\nhttp://www.103style.top',
+                checkedNames: [],
+                checked: false,
+                radiocheck: '103Tech',
+                selected: '?',
+                parentMsg: 'parentMsg',
             },
             methods: {
                 info: function() {
                     return this.site + "----" + this.url;
+                },
+                clear: function(evetnt) {
+                    event.target.value = '';
+                },
+                say: function(message) {
+                    alert(message)
+                },
+                showKey: function(event) {
+                    console.log(event)
+
+                    event.target.value = "你按下了 " + event.code
                 }
             },
             filters: {
@@ -180,9 +339,27 @@
                     }
                     return res;
                 }
+            },
+            watch: {
+                kilometers: function(val) {
+                    this.kilometers = val;
+                    this.meters = this.kilometers * 1000
+                },
+                meters: function(val) {
+                    this.kilometers = val / 1000;
+                    this.meters = val;
+                }
+            },
+            components: {
+                'partion': Child,
             }
         });
+        vm.$watch('kilometers', function(newValue, oldValue) {
+            // 这个回调将在 vm.kilometers 改变后调用
+            document.getElementById("change_info").innerHTML = "修改前值为: " + oldValue + "，修改后值为: " + newValue;
+        });
     </script>
+
 </body>
 
 </html>
