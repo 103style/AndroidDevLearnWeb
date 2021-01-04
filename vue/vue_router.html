@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue路由</title>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-router/2.7.0/vue-router.min.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+
+    <style>
+        .testActive {
+            font-size: 30px;
+            color: crimson;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="vue_router_learn">
+        <!-- 使用 router-link 组件来导航.  通过传入 `to` 属性指定链接. -->
+        <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+        <div class="item">
+            <p class="title">
+                <router-link to="/tech">Go to 103Tech</router-link>
+            </p>
+
+        </div>
+        <div class="item">
+            <p class="title">
+                <router-link to="/website">Go to 103style.top</router-link>
+            </p>
+        </div>
+
+        <div class="item">
+            <p class="title">
+                <router-link v-bind:to="'/js'">rounter-link 的 to 属性 使用 v-bind的 js 表达式</router-link>
+            </p>
+        </div>
+
+        <!-- chorme 好像没效果 -->
+        <div class="item">
+            <p class="title">
+                <router-link to="/replace" replace>配置 replace 属性 不会有 history 记录</router-link>
+            </p>
+        </div>
+
+        <div class="item">
+            <p class="title">
+                <router-link to="/append" append>添加了 append 属性设置路径, 需要点了 103tech 之后再点才能有效果</router-link>
+            </p>
+        </div>
+
+        <div class="item">
+            <p class="title">
+                <router-link to="/tech" tag="li">通过配置 tag 属性为 tag="li" 渲染 router-link 为对应的标签</router-link>
+            </p>
+        </div>
+
+        <div class="item">
+            <p class="title">
+                <router-link to="/website" active-class="testActive">通过配置 active-class 属性为 active-class="testActive" 渲染 router-link 链接激活后的 css 类名为 testActive</router-link>
+            </p>
+        </div>
+
+        <!-- 路由出口， 路由匹配到的组件将渲染在这里-->
+        <router-view></router-view>
+    </div>
+
+    <script>
+        // 1.定义路由组件，也可以从其他文件 import 进来
+        const Tech = {
+            template: '<div class="item">103Tech</div>'
+        }
+        const Website = {
+            template: '<div class="item">103style.top</div>'
+        }
+        const JS = {
+            template: '<div class="item">rounter-link 的 to 属性 使用 v-bind的 js 表达式</div>'
+        }
+        const Replace = {
+            template: '<div class="item">配置replace属性 不会有 history 记录</div>'
+        }
+        const Append = {
+            template: '<div class="item">通过 append 属性设置路径, 需要点了 103tech 之后再点才能有效果</div>'
+        }
+
+        // 2.定义路由
+        // 每个路由应该映射一个组件。
+        // 其中"component" 可以是 通过 Vue.extend() 创建的组件构造器，
+        // 或者，只是一个组件配置对象。
+        const routers = [{
+            path: '/tech',
+            component: Tech
+        }, {
+            path: '/website',
+            component: Website
+        }, {
+            path: '/js',
+            component: JS
+        }, {
+            path: '/replace',
+            component: Replace
+        }, {
+            path: '/103tech/append',
+            component: Append
+        }]
+
+        // 3. 创建 router 实例，然后传 `routes` 配置
+        const router = new VueRouter({
+            //如果变量名为 routes， 可以直接写 routes， 相当于 routes: routes
+            routes: routers
+        })
+
+        // 4. 创建和挂载根实例。
+        // 记得要通过 router 配置参数注入路由，
+        const app = new Vue({
+            router
+        }).$mount('#vue_router_learn');
+    </script>
+
+</body>
+
+</html>

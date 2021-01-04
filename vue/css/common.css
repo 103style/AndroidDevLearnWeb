@@ -1,0 +1,28 @@
+.class1 {
+    color: pink;
+    background: black;
+}
+
+.title {
+    font-size: 20px;
+    color: red;
+    margin: 10px 0px;
+    font-weight: bold;
+}
+
+.title a {
+    text-decoration: none;
+    color: hotpink;
+    text-decoration: underline;
+}
+
+.item {
+    background-color: #eee;
+    padding: 8px 16px;
+    margin-bottom: 10px;
+}
+
+.vif {
+    height: 32px;
+    margin: 10px 0;
+}

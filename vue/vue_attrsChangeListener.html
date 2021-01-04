@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue监听属性变化</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+
+    <div id="vue_learn">
+
+        <div class="item">
+            <p class="title">监听属性变化</p>
+
+            <p>事件处理器示例</p>
+            <span style="font-size:20px;">计数器: {{ counter }}</span>
+
+            <!--  @click = v-on:click -->
+            <button @click="counter++" style="font-size:20px;">点我</button>
+
+            <div>
+                <p>转换示例：</p>
+                千米 : <input type="text" v-model="kilometers"> 米 : <input type="text" v-model="meters">
+
+                <div id="change_info" style="margin: 10px 0;"></div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            //DOM元素的id 匹配对应的元素
+            el: "#vue_learn",
+            data: {
+                counter: 0,
+                kilometers: 0,
+                meters: 0,
+            },
+            methods: {},
+            filters: {
+                capitalize: function(value) {
+                    if (!value) return '';
+                    value = value.toString();
+                    var arr = value.split(' ');
+                    var res = '';
+                    for (var i = 0; i < arr.length; i++) {
+                        res += arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+                        if (i + 1 != arr.length) res += ' ';
+                    }
+                    return res;
+                }
+            },
+            watch: {
+                kilometers: function(val) {
+                    this.kilometers = val;
+                    this.meters = this.kilometers * 1000
+                },
+                meters: function(val) {
+                    this.kilometers = val / 1000;
+                    this.meters = val;
+                }
+            },
+        });
+        vm.$watch('kilometers', function(newValue, oldValue) {
+            // 这个回调将在 vm.kilometers 改变后调用
+            document.getElementById("change_info").innerHTML = "修改前值为: " + oldValue + "，修改后值为: " + newValue;
+        });
+    </script>
+
+</body>
+
+</html>

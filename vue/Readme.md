@@ -83,7 +83,7 @@ export default {
 ## Vue Step 1
 每个 Vue 应用都需要通过实例化 Vue 来实现。  
 
-[vue_demo.html](https://github.com/103style/AndroidDevLearnWeb/tree/master/vue/vue_demo.html)
+> [示例代码](https://github.com/103style/AndroidDevLearnWeb/tree/master/vue/index.html)
 
 示例如下：
 ```
@@ -125,7 +125,7 @@ export default {
 ---
 
 ## Vue.js 模板语法
-[示例代码： vue_demo.html](https://github.com/103style/AndroidDevLearnWeb/tree/master/vue/vue_demo.html)
+> [示例代码](https://github.com/103style/AndroidDevLearnWeb/tree/master/vue/index.html)
 
 * 使用 `{{...}}`（双大括号）的文本插值
   ```
@@ -338,6 +338,9 @@ export default {
 
 
 ## Vue.js 循环语句
+
+> [示例代码](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/vue_circle.html)
+
 ```
 <div id="vue_demo">
     <ol>
@@ -450,6 +453,9 @@ export default {
 
 
 ## Vue.js 监听属性
+
+> [示例代码](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/vue_attrsChangeListener.html)
+
 ```
 <div id="app">
     <p style="font-size:25px;">计数器: {{ counter }}</p>
@@ -800,12 +806,15 @@ Vue.js 通过由点 `.` 表示的指令后缀来调用修饰符。
 ```
 
 
-[doc: https://www.runoob.com/vue2/vue-events.html](https://www.runoob.com/vue2/vue-events.html)
+> [doc: https://www.runoob.com/vue2/vue-events.html](https://www.runoob.com/vue2/vue-events.html)
 
 ---
 
 
 ## Vue.js 表单
+
+> [示例代码](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/vue_from.html)
+
 * 输入框
   ```
   <div id="app">
@@ -895,6 +904,9 @@ Vue.js 通过由点 `.` 表示的指令后缀来调用修饰符。
 
 
 ## [组件](https://www.runoob.com/vue2/vue-component.html)
+
+> [示例代码](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/vue_component.html)
+
 组件（Component）是 Vue.js 最强大的功能之一。
 
 组件可以扩展 HTML 元素，封装可重用的代码。
@@ -1100,6 +1112,9 @@ new Vue({
 
 ## 组件 - 自定义事件
 
+> [示例代码](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/vue_customEvent.html)
+
+
 父组件是使用 `props` 传递数据给子组件，但如果子组件要把数据传递回去，就需要使用自定义事件！
 
 我们可以使用 `v-on` 绑定自定义事件, 每个 Vue 实例都实现了事件接口(Events interface)，即：
@@ -1108,5 +1123,601 @@ new Vue({
 
 另外，父组件可以在使用子组件的地方直接用 v-on 来监听子组件触发的事件。
 
+
+如果你想在某个组件的根元素上监听一个原生事件。可以使用 `.native` 修饰 `v-on` 。例如：
+```
+<my-component v-on:click.native="doSomeThing"></my-component>
+```
+
+**data 必须是一个函数**
+
+上面例子中，可以看到` button-counter` 组件中的 data 不是一个对象，而是一个函数。
+
+这样的好处就是每个实例可以维护一份被返回对象的独立的拷贝，如果 data 是一个对象则会影响到其他实例，
+
+
+---
+
+
+### 自定义组件的 v-model
+组件上的 `v-model` 默认会利用名为 `value` 的 `prop` 和名为 `input` 的事件。
+
+
+`<input v-model="parentData">`  等价于：
+```
+<input 
+    :value="parentData"
+    @input="parentData = $event.target.value"
+>
+```
+
+`checkbox`
+```
+<input
+    type="checkbox"
+    v-bind:checked="checked"
+    v-on:change="$emit('change', $event.target.checked)"
+>
+```
+
+---
+
+## 自定义指令
+除了默认设置的核心指令( `v-model` 和 `v-show` ), Vue 也允许注册自定义指令。
+
+以下示例是通过 `Vue.directive()` 注册一个全局指令 `v-focus`，该指令的功能是在页面加载时，元素获得焦点。
+```
+<div id="app">
+    <p>页面载入时，input 元素自动获取焦点：</p>
+    <input v-focus>
+</div>
+
+<script>
+    // 注册一个全局自定义指令 v-focus
+    Vue.directive('focus', {
+        // 当绑定元素插入到 DOM 中。
+        inserted: function(el) {
+            // 聚焦元素
+            el.focus()
+        }
+    })
+    // 创建根实例
+    new Vue({
+        el: '#app'
+    })
+</script>
+```
+
+注册局部指令,则将其放到对应的 Vue 实例中:
+```
+var app = new Vue({
+    el: '#test',
+    //
+    directives: {
+        focus: {
+            inserted: function(tag) {
+                tag.focus;
+            }
+        }
+    }
+});
+```
+
+---
+
+### 钩子函数
+指令定义函数提供了几个钩子函数（可选）：
+
+* `bind`: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。
+
+* `inserted`: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document 中）。
+
+* `update`: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新（详细的钩子函数参数见下）。
+  
+* `componentUpdated`: 被绑定元素所在模板完成一次更新周期时调用。
+
+* `unbind`: 只调用一次， 指令与元素解绑时调用。
+
+---
+
+### 钩子函数参数
+钩子函数的参数有：
+
+* `el`: 指令所绑定的元素，可以用来直接操作 DOM 。
+
+* `binding`: 一个对象，包含以下属性：
+  * `name`: 指令名，不包括 v- 前缀。
+  * `value`: 指令的绑定值， 例如： v-my-directive="1 + 1", value 的值是 2。
+  * `oldValue`: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。
+  * `expression`: 绑定值的表达式或变量名。 例如 v-my-directive="1 + 1" ， expression 的值是 "1 + 1"。
+  * `arg`: 传给指令的参数。例如 v-my-directive:foo， arg 的值是 "foo"。
+  * `modifiers`: 一个包含修饰符的对象。 例如： v-my-directive.foo.bar, 修饰符对象 modifiers 的值是 { foo: true, bar: true }。
+
+* `vnode`: Vue 编译生成的虚拟节点。
+
+* `oldVnode`: 上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。
+
+
+获取钩子函数 `bind` 函数参数的示例：
+```
+Vue.directive('103tech', {
+    bind: function(el, binding, vnode) {
+        var s = JSON.stringify
+        el.innerHTML =
+            '指令名--name: ' + s(binding.name) + '<br>' +
+            '指令的绑定值--value: ' + s(binding.value) + '<br>' +
+            '绑定值的表达式或变量名--expression: ' + s(binding.expression) + '<br>' +
+            '传给指令的参数--arg: ' + s(binding.arg) + '<br>' +
+            '一个包含修饰符的对象--modifiers: ' + s(binding.modifiers) + '<br>' +
+            ' Vue 编译生成的虚拟节点--vnode keys: ' + Object.keys(vnode).join(', ')
+    }
+})
+```
+
+如果不需要其他钩子函数，我们可以简写为
+```
+Vue.directive('103tech', function (el, binding) {
+  // 设置指令的背景颜色
+  el.style.backgroundColor = binding.value.color
+})
+```
+
+---
+
+## 路由
+对于大多数单页面应用，都推荐使用官方支持的 [vue-router](https://github.com/vuejs/vue-router) 库。
+
+
+> [示例代码](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/vue_router.html)
+
+
+
+简单示例：
+```
+<div id="vue_router_learn">
+    <!-- 使用 router-link 组件来导航. 通过传入 `to` 属性指定链接. -->
+    <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+    <div class="title">
+        <router-link to="/tech">Go to 103Tech</router-link>
+    </div>
+    <div class="title">
+        <router-link to="/website">Go to 103style.top</router-link>
+    </div>
+
+    <!-- 路由出口， 路由匹配到的组件将渲染在这里-->
+    <router-view></router-view>
+</div>
+
+<script>
+    // 1.定义路由组件，也可以从其他文件 import 进来
+    const Tech = {
+        template: '<div class="item">103Tech</div>'
+    }
+    const Website = {
+        template: '<div class="item">103style.top</div>'
+    }
+
+    // 2.定义路由表
+    // 每个路由应该映射一个组件。
+    // 其中"component" 可以是 通过 Vue.extend() 创建的组件构造器，
+    // 或者，只是一个组件配置对象。
+    const routers = [{
+        path: '/tech',
+        component: Tech
+    }, {
+        path: '/website',
+        component: Website
+    }]
+
+    // 3. 创建 router 实例，然后传 `routes` 配置
+    const router = new VueRouter({
+        //如果路由表变量名为 routes， 可以直接写 routes， 相当于 routes: routes
+        routes: routers
+    })
+
+    // 4. 创建和挂载根实例。
+    // 记得要通过 router 配置参数注入路由，
+    const app = new Vue({
+        router
+    }).$mount('#vue_router_learn');
+</script>
+```
+
+---
+
+### `<router-link>` 相关属性
+* `to` -- 表示目标路由的链接。
+  ```
+  <!-- 字符串 -->
+  <router-link to="home">Home</router-link>
+  <!-- 渲染结果 -->
+  <a href="home">Home</a>
+  
+  <!-- 使用 v-bind 的 JS 表达式 -->
+  <router-link v-bind:to="'home'">Home</router-link>
+  <!-- 不写 v-bind 也可以，就像绑定别的属性一样 -->
+  <router-link :to="'home'">Home</router-link>
+  
+  <!-- 同上 -->
+  <router-link :to="{ path: 'home' }">Home</router-link>
+  
+  <!-- 命名的路由 -->
+  <router-link :to="{ name: 'user', params: { userId: 123 }}">User</  router-link>
+  
+  <!-- 带查询参数，下面的结果为 /register?plan=private -->
+  <router-link :to="{ path: 'register', query: { plan: 'private' }}">Register</  router-link>
+  ```
+
+* `replace` -- 设置 `replace` 属性的话，当点击时，会调用 `router.replace()` 而不是 `router.push()`，导航后不会留下 history 记录。
+  ```
+  <router-link :to="{ path: '/abc'}" replace></router-link>
+  ```
+
+* `append` -- 设置 `append` 属性后，则在当前 (相对) 路径前添加其路径。例如，我们从 `/a` 导航到一个相对路径 `b`，如果没有配置 `append`，则路径为 `/b`，如果配了，则为 `/a/b`。
+  ```
+  <router-link :to="{ path: 'relative/path'}" append></router-link>
+  ```
+
+* `tag` -- 有时候想要 `<router-link>` 渲染成某种标签，例如 `<li>`。 于是我们使用 `tag` prop 类指定何种标签，同样它还是会监听点击，触发导航。
+  ```
+  <router-link to="/foo" tag="li">foo</router-link>
+  <!-- 渲染结果 -->
+  <li>foo</li>
+  ```
+
+* `active-class` -- 设置 链接激活时使用的 CSS 类名。可以通过以下代码来替代。
+  ```
+  <style>
+     ._active{
+        background-color : red;
+     }
+  </style>
+  <p>
+     <router-link v-bind:to = "{ path: '/route1'}" active-class = "_active">Router Link 1</router-link>
+     <router-link v-bind:to = "{ path: '/route2'}" tag = "span">Router Link 2</router-link>
+  </p>
+  ```
+
+* `exact-active-class` -- 配置当链接被精确匹配的时候应该激活的 class。可以通过以下代码来替代。
+  ```
+  <p>
+     <router-link v-bind:to = "{ path: '/route1'}" exact-active-class = "_active">Router Link 1</router-link>
+     <router-link v-bind:to = "{ path: '/route2'}" tag = "span">Router Link 2</router-link>
+  </p>
+  ```
+
+* `event` -- 声明可以用来触发导航的事件。
+  ```
+  <router-link v-bind:to = "{ path: '/route1'}" event = "mouseover">Router Link 1</router-link>
+  ```
+
+---
+
+## 过渡 & 动画
+### 过渡
+Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。
+
+Vue 提供了内置的过渡封装组件，该组件用于包裹要实现过渡效果的组件。
+
+
+语法格式
+```
+<transition name = "nameoftransition">
+   <div></div>
+</transition>
+```
+
+> [示例代码](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/vue_anim.html)
+
+
+示例代码中通过点击更改 `show` 字段，触发淡入淡出的效果 `fade`。
+```
+<button v-on:click="show = !show">点我</button>
+<transition name="fade">
+    <p v-show="show" v-bind:style="styleobj">动画实例</p>
+</transition>
+```
+
+Vue在元素显示与隐藏的过渡中，提供了以下 6 个 class 来切换。
+
+设置时将前缀 `v` 替换城设置的 动画名字。
+* `v-enter`：定义进入过渡的开始状态。在元素被插入之前生效，在元素被插入之后的下一帧移除。
+
+* `v-enter-active`：定义进入过渡生效时的状态。在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡/动画完成之后移除。这个类可以被用来定义进入过渡的过程时间，延迟和曲线函数。
+
+* `v-enter-to`: 2.1.8版及以上 定义进入过渡的结束状态。在元素被插入之后下一帧生效 (与此同时 v-enter 被移除)，在过渡/动画完成之后移除。
+
+* `v-leave`: 定义离开过渡的开始状态。在离开过渡被触发时立刻生效，下一帧被移除。
+
+* `v-leave-active`：定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。
+
+* `v-leave-to`: 2.1.8版及以上 定义离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 v-leave 被删除)，在过渡/动画完成之后移除。
+
+![transition](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/img/transition.png.html)
+
+
+对于这些在过渡中切换的类名来说，如果你使用一个没有名字的 `<transition>`，则 `v-` 是这些类名的默认前缀。如果你使用了 `<transition name="my-transition">`，那么 `v-enter` 会替换为 `my-transition-enter`。
+
+`v-enter-active` 和 `v-leave-active` 可以控制进入/离开过渡的不同的缓和曲线，在下面章节会有个示例说明。
+
+
+---
+
+### CSS 过渡
+> [示例代码](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/vue_anim.html)
+
+```
+<style>
+    /* 可以设置不同的进入和离开动画 */
+    /* 设置持续时间和动画函数 */
+    
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    
+
+    /* .slide-fade-leave-active 用于 2.1.8 以下版本 */
+    .slide-fade-enter,
+    .slide-fade-leave-to{
+        transform: translateX(10px);
+        opacity: 0;
+    }
+</style>
+
+<body>
+    <transition name="slide-fade">
+        <p v-if="show">103Tech</p>
+    </transition>
+</body>
+```
+
+---
+
+### CSS动画
+> [示例代码](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/vue_anim.html)
+
+```
+<style>
+    .anim-enter {
+        animation: bounce-in 2s;
+    }
+    .anim-leave-active {
+        animation: bounce-in 2s reverse;
+    }
+    @keyframes bounce-in {
+        0% {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
+<body>
+    <div id="vue_anim">
+        <transition name="anim">
+            <p v-show="show" v-bind:style="styleobj">动画B</p>
+        </transition>
+    </div>
+</body>
+```
+
+---
+
+### 自定义过渡的类名
+我们可以通过以下特性来自定义过渡类名：
+* `enter-class`
+* `enter-active-class`
+* `enter-to-class (2.1.8+)`
+* `leave-class`
+* `leave-active-class`
+* `leave-to-class (2.1.8+)`
+
+**自定义过渡的类名优先级高于普通的类名，这样就能很好的与第三方（如：animate.css）的动画库结合使用。**
+
+---
+
+
+### 同时使用过渡和动画
+Vue 为了知道过渡的完成，必须设置相应的事件监听器。它可以是 `transitionend` 或 `animationend` ，这取决于给元素应用的 CSS 规则。
+
+如果你使用其中任何一种，Vue 能自动识别类型并设置监听。
+
+但是，在一些场景中，你需要给同一个元素同时设置两种过渡动效，比如 `animation` 很快的被触发并完成了，而 `transition` 效果还没结束。在这种情况中，你就需要使用 `type` 特性并设置 `animation` 或 `transition` 来明确声明你需要 Vue 监听的类型。
+
+---
+
+
+### 显性的过渡持续时间
+
+**2.2.0 新增**
+
+在很多情况下，Vue 可以自动得出过渡效果的完成时机。
+
+默认情况下，Vue 会等待其在过渡效果的根元素的第一个 `transitionend` 或 `animationend` 事件。
+
+然而也可以不这样设定——比如，我们可以拥有一个精心编排的一系列过渡效果，其中一些嵌套的内部元素相比于过渡效果的根元素有延迟的或更长的过渡效果。
+
+
+在这种情况下你可以用 <transition> 组件上的 duration 属性定制一个显性的过渡持续时间 (以毫秒计)：
+```
+<transition :duration="1000">...</transition>
+
+//or
+<transition :duration="{ enter: 500, leave: 800 }">...</transition>
+```
+
+---
+
+### JavaScript 钩子
+可以在属性中声明 JavaScript 钩子。
+
+这些钩子函数可以结合 CSS `transitions`/`animations` 使用，也可以单独使用。
+
+
+**当只用 JavaScript 过渡的时候，在 `enter` 和 `leave` 中必须使用 `done` 进行回调。否则，它们将被同步调用，过渡会立即完成。**
+
+
+**推荐对于仅使用 JavaScript 过渡的元素添加 `v-bind:css="false"`，Vue 会跳过 CSS 的检测。这也可以避免过渡过程中 CSS 的影响。**
+
+```
+<transition
+  v-on:before-enter="beforeEnter"
+  v-on:enter="enter"
+  v-on:after-enter="afterEnter"
+  v-on:enter-cancelled="enterCancelled"
+ 
+  v-on:before-leave="beforeLeave"
+  v-on:leave="leave"
+  v-on:after-leave="afterLeave"
+  v-on:leave-cancelled="leaveCancelled"> 
+  <!-- ... -->
+</transition>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#vue_anim",
+        methods: {
+            // 进入中
+            beforeEnter: function(el) {
+                // ...
+            },
+            // 此回调函数是可选项的设置与 CSS 结合时使用
+            enter: function(el, done) {
+                // ...
+                done()
+            },
+            afterEnter: function(el) {
+                // ...
+            },
+            enterCancelled: function(el) {
+                // ...
+            },
+            // 离开时
+            beforeLeave: function(el) {
+                // ...
+            },
+            // 此回调函数是可选项的设置与 CSS 结合时使用
+            leave: function(el, done) {
+                // ...
+                done()
+            },
+            afterLeave: function(el) {
+                // ...
+            },
+            // leaveCancelled 只用于 v-show 中
+            leaveCancelled: function(el) {
+                // ...
+            }
+        }
+    });
+</script>
+```
+
+---
+
+
+## 初始渲染的过渡
+可以通过 `appear` 属性设置节点在初始渲染的过渡。
+```
+<transition appear>
+  <!-- ... -->
+</transition>
+```
+
+这里默认和进入/离开过渡一样，同样也可以自定义 CSS 类名。
+```
+<transition
+  appear
+  appear-class="custom-appear-class"
+  appear-to-class="custom-appear-to-class" (2.1.8+)
+  appear-active-class="custom-appear-active-class"
+>
+  <!-- ... -->
+</transition>
+```
+
+
+---
+
+## 多个元素的过渡
+我们可以设置多个元素的过渡，对于原生标签可以使用 `v-if`/`v-else`。
+
+最常见的多标签过渡是一个列表和描述这个列表为空消息的元素。
+
+```
+<transition>
+  <table v-if="items.length > 0">
+    <!-- ... -->
+  </table>
+  <p v-else>抱歉，没有找到您查找的内容。</p>
+</transition>
+```
+
+**当有相同标签名的元素切换时，需要通过 `key` 属性设置唯一的值来标记以让 Vue 区分它们，否则 Vue 为了效率只会替换相同标签内部的内容。即使在技术上没有必要，给在 `<transition>` 组件中的多个元素设置 key 是一个更好的实践。**
+
+
+如下实例：
+```
+<transition>
+  <button v-if="isEditing" key="save">
+    Save
+  </button>
+  <button v-else key="edit">
+    Edit
+  </button>
+</transition>
+```
+在一些场景中，也可以通过给同一个元素的 key 特性设置不同的状态来代替 `v-if` 和 `v-else`，上面的例子可以重写为：
+```
+<transition>
+  <button v-bind:key="isEditing">
+    {{ isEditing ? 'Save' : 'Edit' }}
+  </button>
+</transition>
+```
+
+使用多个 `v-if` 的多个元素的过渡可以重写为绑定了动态属性的单个元素过渡。例如：
+```
+<transition>
+  <button v-if="docState === 'saved'" key="saved">
+    Edit
+  </button>
+  <button v-if="docState === 'edited'" key="edited">
+    Save
+  </button>
+  <button v-if="docState === 'editing'" key="editing">
+    Cancel
+  </button>
+</transition>
+```
+
+可以重写为：
+```
+<transition>
+  <button v-bind:key="docState">
+    {{ buttonMessage }}
+  </button>
+</transition>
+```
+
+```
+// ...
+computed: {
+  buttonMessage: function () {
+    switch (this.docState) {
+      case 'saved': return 'Edit'
+      case 'edited': return 'Save'
+      case 'editing': return 'Cancel'
+    }
+  }
+}
+```
 
 ---

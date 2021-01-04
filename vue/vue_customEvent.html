@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Custom Event</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+    <div id="custom_event">
+
+        <div class="item">
+            <p class="title">自定义事件</p>
+
+
+            <p>点击总次数为： {{ total }}</p>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+        </div>
+
+
+        <div class="item">
+            <p class="title">自定义组件的 v-model</p>
+            <custom-input v-model="num"></custom-input>
+            <p>输入的数字为:{{num}}</p>
+
+
+            <custom-checkbox v-model="lovingVue"></custom-checkbox>
+            <div v-show="lovingVue">
+                勾选上我就是出现。
+            </div>
+        </div>
+
+
+        <div class="item">
+            <p class="title">自定义指令</p>
+
+            <p>自定义在页面加载时，元素获得焦点的指令 v-foucs</p>
+            <input v-focus placeholder="加载时获取焦点">
+
+        </div>
+
+
+        <div class="item">
+            <p class="title">钩子函数</p>
+
+            <p>自定义指令 "v-103tech:arg1.modifier1.modifier2" 钩子函数 bind 的 参数和对应的值 如下：</p>
+            <div v-103tech:arg1.modifier1.modifier2="message">
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('button-counter', {
+            template: '<button v-on:click="incrementHandler">{{ counter }}</button>',
+            data: function() {
+                return {
+                    counter: 0,
+                };
+            },
+            methods: {
+                incrementHandler: function() {
+                    this.counter += 1
+                    this.$emit('increment')
+                }
+            },
+        })
+
+        //自定义input
+        Vue.component('custom-input', {
+            template: `
+                <p>   <!-- 包含了名为 input 的事件 -->
+                    <input
+                    ref="input"
+                    :value="value" 
+                    @input="$emit('input', $event.target.value)"
+                    >
+                </p>
+            `,
+            props: ['value'],
+        })
+
+        //自定义checkbox
+        Vue.component('custom-checkbox', {
+            model: {
+                prop: 'checked',
+                event: 'change' //onchange事件
+            },
+            props: {
+                checked: Boolean
+            },
+            template: `
+                <input
+                    type="checkbox"
+                    v-bind:checked="checked"
+                    v-on:change="$emit('change', $event.target.checked)"
+                >
+            `
+        })
+
+        //注册一个全局的指令  在加载时 获取焦点
+        Vue.directive('focus', {
+            inserted: function(el) {
+                el.focus();
+            }
+        })
+
+        //定义了全局指令 103tech 并设置的钩子函数 bind  
+        Vue.directive('103tech', {
+            bind: function(el, binding, vnode) {
+                var s = JSON.stringify
+                el.innerHTML =
+                    '指令名--name: ' + s(binding.name) + '<br>' +
+                    '指令的绑定值--value: ' + s(binding.value) + '<br>' +
+                    '绑定值的表达式或变量名--expression: ' + s(binding.expression) + '<br>' +
+                    '传给指令的参数--arg: ' + s(binding.arg) + '<br>' +
+                    '一个包含修饰符的对象--modifiers: ' + s(binding.modifiers) + '<br>' +
+                    ' Vue 编译生成的虚拟节点--vnode keys: ' + Object.keys(vnode).join(', ')
+            }
+        })
+
+        var app = new Vue({
+            el: '#custom_event',
+            data: {
+                total: 0,
+                num: 100,
+                lovingVue: true,
+                message: '103style.top'
+            },
+            methods: {
+                incrementTotal: function() {
+                    this.total += 1
+                }
+            },
+            //注册局部指令
+            // directives: {
+            //     focus: {
+            //         inserted: function(tag) {
+            //             tag.focus;
+            //         }
+            //     }
+            // }
+        });
+    </script>
+
+</body>
+
+
+</html>

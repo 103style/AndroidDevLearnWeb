@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+
+    <div id="vue_component">
+
+        <div class="item">
+            <p class="title">组件</p>
+
+            <!-- 全局组件 -->
+            <global></global>
+
+            <!-- 局部组件 -->
+            <partion></partion>
+
+            <!-- prop组件 -->
+            <proptest propmsg="Hello Prop!"></proptest>
+
+            <hr>
+            <!-- 动态prop -->
+            <div>
+                父组件内容： <input v-model="parentMsg">
+                <br> prop组件内容：
+                <proptest v-bind:propmsg='parentMsg'></proptest>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        //全局组件
+        Vue.component('global', {
+            template: '<h2>全局组件 global标签</h2>'
+        })
+
+        //局部组件
+        var Child = {
+            template: '<h2>局部组件 partion标签</h2>'
+        }
+
+        //prop组件
+        Vue.component('proptest', {
+            //申明prop
+            props: ['propmsg'],
+            template: '<span>{{ propmsg }}</span>'
+        })
+
+
+        var vm = new Vue({
+            //DOM元素的id 匹配对应的元素
+            el: "#vue_component",
+            data: {
+                parentMsg: 'parentMsg',
+            },
+            components: {
+                'partion': Child,
+            }
+        });
+    </script>
+
+</body>
+
+</html>

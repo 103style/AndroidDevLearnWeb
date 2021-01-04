@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 循环语句</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+
+    <div class="item" id="vue_circle">
+        <p class="title">Vue循环语句</p>
+
+        <p>v-for='todo in todos'</p>
+        <ul>
+            <li v-for='todo in todos'>
+                {{todo.text}}
+            </li>
+        </ul>
+        <hr>
+        <p>v-for='value in object'</p>
+        <ul>
+            <li v-for='value in object'>
+                {{value}}
+            </li>
+        </ul>
+        <hr>
+        <p>v-for='(a, b, c) in object' 依次为 value/key/index</p>
+        <ul>
+            <li v-for='(a, b, c) in object'>
+                {{ a }}. {{ b }} : {{ c }}
+            </li>
+        </ul>
+        <hr>
+        <p>v-for='n in 20'</p>
+        <ul>
+            <li v-for='n in 20'>
+                {{n}}
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#vue_circle',
+            data: {
+                todos: [{
+                    text: 'a'
+                }, {
+                    text: 'bb'
+                }, {
+                    text: 'cccc'
+                }, {
+                    text: 'dddd'
+                }, ],
+
+                object: {
+                    name: '103style',
+                    wx: '103Tech',
+                    web: '103style.top'
+                },
+            },
+            methods: {
+                incrementTotal: function() {
+                    this.total += 1
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

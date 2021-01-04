@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 过渡 & 动画</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+
+    <style>
+        /* 可以设置不同的进入和离开动画 */
+        /* 设置持续时间和动画函数 */
+        
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 2s
+        }
+        /* .fade-leave-active, 2.1.8 版本以下 */
+        
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0
+        }
+        
+        .fade-css-enter {
+            transition: all 2s ease;
+        }
+        
+        .fade-css-leave-active {
+            transition: all 2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+        
+        .fade-css-enter,
+        .fade-css-leave-to {
+            transform: translateX(10px);
+            opacity: 0;
+        }
+        
+        .anim-enter {
+            animation: bounce-in 2s;
+        }
+        
+        .anim-leave-active {
+            animation: bounce-in 2s reverse;
+        }
+        
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="vue_anim">
+        <div class="item">
+            <center><button v-on:click="show = !show">点我触发淡入淡出的动画效果</button></center>
+
+
+            <transition name="fade">
+                <p v-show="show" v-bind:style="styleobj">动画A</p>
+            </transition>
+
+            <transition name="fade-css">
+                <p v-show="show" v-bind:style="styleobj">CSS过渡动画B</p>
+            </transition>
+
+            <transition name="anim">
+                <p v-show="show" v-bind:style="styleobj">CSS动画C</p>
+            </transition>
+
+
+            <transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+                <p v-if="show" v-bind:style="styleobj">自定义过渡类名</p>
+            </transition>
+
+        </div>
+
+
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            //DOM元素的id 匹配对应的元素
+            el: "#vue_anim",
+            data: {
+                show: true,
+                styleobj: {
+                    fontSize: '30px',
+                    color: 'red',
+                    'text-align': 'center',
+                }
+            },
+        });
+    </script>
+
+</body>
+
+</html>
