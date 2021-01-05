@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js 响应接口</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body>
+
+    <div id="vue_reactive">
+        <p class="title">计数器: {{ counter }}</p>
+
+        <button @click="counter++">点我</button>
+
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: "#vue_reactive",
+            data: {
+                counter: 0,
+            },
+        });
+        //监听 counter 的变化
+        vm.$watch('counter', function(now, before) {
+            alert('计数器值的变化 :' + before + ' 变为 ' + now + '!');
+        })
+
+        //10s后将 counter 修改为 20
+        setTimeout(function() {
+            vm.counter = 20;
+        }, 10000);
+    </script>
+
+</body>
+
+</html>

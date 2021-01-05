@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Ajax(axios)</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+
+</head>
+
+<body>
+
+    <div id="vue_ajax">
+        <div class="item">
+            <p>get请求获取 http://localhost:8081/ 的返回结果为： </p>
+            <p>response = {{info}}</p>
+            <p>response.data = {{info != null ? info.data:info}}</p>
+            <p>response.status = {{info != null ? info.status:info}}</p>
+            <p>response.statusText = {{info != null ? info.statusText:info}}</p>
+            <p>response.headers = {{info != null ? info.headers:info}}</p>
+            <p>response.config = {{info != null ? info.config:info}}</p>
+        </div>
+
+        <div class="item">
+            <p>get请求获取 http://localhost:8081/ 的返回数据的 sites中每个site的name分别是： </p>
+
+            <ul>
+                <li v-for='site in sites'>
+                    {{site.name}}
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="item">
+            <p>get请求 带参数 获取 http://localhost:8081/ 的返回数据： </p>
+            <p>{{response != null ? response.data : response}}</p>
+        </div>
+
+
+        <div class="item">
+            <p>POST请求 http://localhost:8081/ 的数据： </p>
+            <p>{{postRes}}</p>
+            <p>POST请求参数 = {{postRes != null ? postRes.data : postRes}}</p>
+        </div>
+
+    </div>
+
+    <script type=" text/javascript ">
+        var vm = new Vue({
+            el: "#vue_ajax ",
+            data: {
+                info: null,
+                sites: null,
+                response: null,
+                postRes: null,
+            },
+            mounted() {
+                //GET请求
+                axios
+                    .get('http://localhost:8081/')
+                    .then(res => {
+                        this.info = res;
+                        this.sites = res.data.sites;
+                    })
+                    .catch(function(err) {
+                        console.log(err)
+                    });
+
+                //带参数的GET请求
+                axios
+                    .get('http://localhost:8081/', {
+                        params: {
+                            name: '103Tech',
+                            url: '103style.top'
+                        }
+                    })
+                    .then(res => {
+                        this.response = res;
+                    })
+                    .catch(function(err) {
+                        console.log(err)
+                    });
+
+                //POST请求
+                axios
+                    .post('http://localhost:8081/', {
+                        params: {
+                            params1: 'A',
+                            params2: 'B',
+                            params3: 'C',
+                            params4: 'D',
+                        }
+                    }).then(res => {
+                        this.postRes = res
+                    })
+                    .catch(function(err) {
+                        console.log(err)
+                    });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

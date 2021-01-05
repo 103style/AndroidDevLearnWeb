@@ -1721,3 +1721,357 @@ computed: {
 ```
 
 ---
+
+### 过渡模式
+* `in-out`：新元素先进行过渡，完成之后当前元素过渡离开。
+
+* `out-in`：当前元素先进行过渡，完成之后新元素过渡进入。
+
+```
+<transition name="fade" mode="out-in">
+  <!-- ... the buttons ... -->
+</transition>
+```
+
+---
+
+
+## 混入
+混入 (`mixins`)定义了一部分可复用的方法或者计算属性。混入对象可以包含任意组件选项。
+
+当组件使用混入对象时，所有混入对象的选项将被混入该组件本身的选项。
+
+> [示例代码](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/vue_mixin.html)
+
+
+```
+<div id="vue_mixin">
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#vue_mixin",
+        data: {},
+    });
+
+    var mixinA = {
+        created: function() {
+            this.startmixin();
+        },
+        methods: {
+            startmixin: function() {
+                document.write("Hello Mixin.");
+            }
+        }
+    }
+
+    var ComponentMixinA = Vue.extend({
+        mixins: [mixinA]
+    })
+    var conmpentA = new ComponentMixinA();
+</script>
+```
+
+---
+
+
+### 选项合并
+当组件和混入对象含有同名选项时，这些选项将以恰当的方式混合。
+
+```
+<div id="vue_mixin">
+</div>
+
+<script type="text/javascript">
+    var mixinA = {
+        created: function() {
+            this.startmixin();
+        },
+        methods: {
+            startmixin: function() {
+                document.write("Hello Mixin. <br>");
+            },
+        }
+    }
+
+    var ComponentMixinA = Vue.extend({
+        mixins: [mixinA]
+    })
+    var conmpentA = new ComponentMixinA();
+
+    var vm = new Vue({
+        el: "#vue_mixin",
+        data: {},
+        mixins: [mixinA],
+        created: function() {
+            document.write('组件调用' + '<br>')
+        },
+        
+    });
+</script>
+```
+界面输出：
+```
+Hello Mixin.
+组件调用
+```
+从输出结果可以看出两个选项合并了。
+
+
+
+如果 methods 选项中有相同的函数名，则 **Vue 实例** 优先级会较高。
+```
+<div id="vue_mixin">
+</div>
+
+<script type="text/javascript">
+
+    var mixinA = {
+        methods: {
+            hellworld: function() {
+                document.write('HelloWorld 方法' + '<br>');
+            },
+            samemethod: function() {
+                document.write('Mixin：相同方法名' + '<br>');
+            }
+        }
+    }
+    var vm = new Vue({
+        el: "#vue_mixin",
+        data: {},
+        mixins: [mixinA],
+        methods: {
+            start: function() {
+                document.write('start 方法' + '<br>');
+            },
+            samemethod: function() {
+                document.write('Main：相同方法名' + '<br>');
+            }
+        }
+    });
+
+    vm.hellworld();
+    vm.start();
+    vm.samemethod();
+</script>
+```
+输出：
+```
+HelloWorld 方法
+start 方法
+Main：相同方法名
+```
+
+---
+
+### 全局混入
+
+也可以全局注册混入对象。注意使用！ 一旦使用全局混入对象，将会影响到 所有 之后创建的 Vue 实例。使用恰当时，可以为自定义对象注入处理逻辑。
+
+```
+<div id="vue_mixin">
+</div>
+<script type="text/javascript">
+    //全局混入
+    Vue.mixin({
+        created: function() {
+            var myOption = this.$options.myOption
+            if (myOption) {
+                document.write(myOption)
+            }
+        }
+    })
+    var vm = new Vue({
+        el: "#vue_mixin",
+        data: {},
+        myOption: 'hello!',
+    });
+    
+</script>
+```
+
+---
+
+
+## Ajax(axios)
+[axios.md](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/axios.md)
+
+---
+
+
+## Ajax(vue-resource)
+
+Vue 要实现异步加载需要使用到 vue-resource 库。
+
+Vue.js 2.0 版本推荐使用 axios 来完成 ajax 请求。
+
+```
+<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+```
+
+### Get 请求
+```
+//发送get请求
+this.$http.get('/try/ajax/ajax_info.txt').then(function(res){
+    document.write(res.body);    
+},function(){
+    console.log('请求失败处理');
+});
+```
+
+如果需要传递数据，可以使用 `this.$http.get('get.php',{params : jsonData})` 格式，第二个参数 `jsonData` 就是传到后端的数据。
+
+```
+this.$http.get('get.php', {params : {a:1,b:2}}).then(function(res){
+    document.write(res.body);    
+},function(res){
+    console.log(res.status);
+});
+```
+
+---
+
+
+### post 请求
+post 发送数据到后端，需要第三个参数 `{emulateJSON:true}`。
+
+`emulateJSON` 的作用： 如果Web服务器无法处理编码为 application/json 的请求，你可以启用 `emulateJSON` 选项。
+
+```
+//发送 post 请求
+this.$http.post('/try/ajax/demo_test_post.php',{name:"菜鸟教程",url:"http://www.runoob.com"},{emulateJSON:true}).then(function(res){
+    document.write(res.body);    
+},function(res){
+    console.log(res.status);
+});
+```
+
+---
+
+
+### 语法 & API
+你可以使用全局对象方式 `Vue.http` 或者在一个 Vue 实例的内部使用 `this.$http` 来发起 HTTP 请求。
+```
+// 基于全局Vue对象使用http
+Vue.http.get('/someUrl', [options]).then(successCallback, errorCallback);
+Vue.http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
+
+// 在一个Vue实例内使用$http
+this.$http.get('/someUrl', [options]).then(successCallback, errorCallback);
+this.$http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
+```
+
+`vue-resource` 提供了 7 种请求 API(REST 风格)：
+```
+get(url, [options])
+head(url, [options])
+delete(url, [options])
+jsonp(url, [options])
+post(url, [body], [options])
+put(url, [body], [options])
+patch(url, [body], [options])
+```
+
+`options` 参数说明:
+* `url` -- string  --- 请求的目标URL
+
+* `body` -- Object, FormData, string  --- 作为请求体发送的数据
+* `headers` -- Object  ---  作为请求头部发送的头部对象
+* `params` -- Object  ---  作为URL参数的参数对象
+* `method` -- string  ---  HTTP方法 (例如GET，POST，...)
+* `timeout` -- number  ---  请求超时（单位：毫秒）(0表示永不超时)
+* `before` -- function(request)	--- 在请求发送之前修改请求的回调函数
+* `progress` -- function(event)  ---  用于处理上传进度的回调函数 ProgressEvent
+* `credentials` -- boolean  ---  是否需要出示用于跨站点请求的凭据
+* `emulateHTTP` -- boolean  ---  是否需要通过设置 `X-HTTP-Method-Override` 头部并且以传统POST方式发送PUT，PATCH和DELETE请求。
+* `emulateJSON` -- boolean  ---  设置请求体的类型为 `application/x-www-form-urlencoded`
+
+
+通过如下属性和方法处理一个请求获取到的响应对象：
+* `url` --  string --- 响应的 URL 源
+
+* `body` --  Object, Blob, string ---  响应体数据
+* `headers` --  Header --- 请求头部对象
+* `ok` --  boolean --- 当 HTTP 响应码为 200 到 299 之间的数值时该值为 true
+* `status` --  number --- HTTP 响应码
+* `statusText` --  string --- HTTP 响应状态
+* `text()` -- 约定值  --- 以字符串方式返回响应体
+* `json()` -- 约定值  --- 以格式化后的 json 对象方式返回响应体
+* `blob()` -- 约定值  --- 以二进制 Blob 对象方式返回响应体
+
+---
+
+## 响应接口
+Vue 可以添加数据动态响应接口。
+
+例如以下实例，我们通过使用 `$watch` 属性来实现数据的监听，`$watch` 必须添加在 Vue 实例之外才能实现正确的响应。
+
+下面的示例中通过点击按钮计数器会加 1。`setTimeout` 设置 `10秒` 后计算器的值修改为 `20` 。
+```
+<div id="vue_reactive">
+    <p class="title">计数器: {{ counter }}</p>
+
+    <button @click="counter++" style="font-size:25px;">点我</button>
+
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#vue_reactive",
+        data: {
+            counter: 0,
+        },
+    });
+    //监听 counter 的变化
+    vm.$watch('counter', function(now, before) {
+        alert('计数器值的变化 :' + before + ' 变为 ' + now + '!');
+    })
+
+    //10s后将 counter 修改为 20
+    setTimeout(function() {
+        vm.counter = 20;
+    }, 10000);
+</script>
+```
+
+
+Vue 不允许在已经创建的实例上动态添加新的根级响应式属性。
+
+Vue 不能检测到对象属性的添加或删除，最好的方式就是在初始化实例前声明根级响应式属性，哪怕只是一个空值。
+
+如果我们需要在运行过程中实现属性的添加或删除，则可以使用全局 Vue，`Vue.set` 和 `Vue.delete` 方法。
+
+
+---
+
+
+### Vue.set
+`Vue.set` 方法用于设置对象的属性，它可以解决 Vue 无法检测添加属性的限制，语法：`Vue.set( target, key, value )`。
+
+
+通过 `Vue.set` 添加了属性， 会自动生成对应的 `get/set` 方法。
+
+但是通过 `vm.products.qty = "1";` 这样添加属性则不会生成对应的 `get/set` 方法。
+```
+<script type = "text/javascript">
+var myproduct = {"id":1, name:"book", "price":"20.00"};
+var vm = new Vue({
+   el: '#app',
+   data: {
+      products: myproduct
+   }
+});
+Vue.set(myproduct, 'qty', 1);
+</script>
+```
+
+
+---
+
+
+### Vue.delete
+`Vue.delete` 用于删除动态添加的属性。 语法：`Vue.delete( target, key )`。
+
+被删除属性对应的 'get/set' 方法也会被删除。
+
+---

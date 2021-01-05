@@ -1,0 +1,9 @@
+{
+    "name":"网站",
+    "num":3,
+    "sites": [
+        { "name":"Google", "info":[ "Android", "Google 搜索", "Google 翻译" ] },
+        { "name":"103Tech", "info":[ "103Tech", "103style", "103style.top" ] },
+        { "name":"Taobao", "info":[ "淘宝", "网购" ] }
+    ]
+}

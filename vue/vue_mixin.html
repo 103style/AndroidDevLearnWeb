@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js 混入</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+
+</head>
+
+<body>
+
+    <div id="vue_mixin">
+    </div>
+
+    <script type="text/javascript">
+        //全局混入
+        Vue.mixin({
+            created: function() {
+                var myOption = this.$options.myOption
+                if (myOption) {
+                    document.write(myOption)
+                }
+            }
+        })
+
+        //创建局部混入
+        // var mixinA = {
+        //     created: function() {
+        //         this.startmixin();
+        //     },
+        //     methods: {
+        //         startmixin: function() {
+        //             document.write("Hello Mixin. <br>");
+        //         },
+        //         hellworld: function() {
+        //             document.write('HelloWorld 方法' + '<br>');
+        //         },
+        //         samemethod: function() {
+        //             document.write('Mixin：相同方法名' + '<br>');
+        //         }
+        //     }
+        // }
+        // var ComponentMixinA = Vue.extend({
+        //     mixins: [mixinA]
+        // })
+        // var conmpentA = new ComponentMixinA();
+
+        var vm = new Vue({
+            el: "#vue_mixin",
+            data: {},
+            // mixins: [mixinA],
+            myOption: 'hello!',
+            // created: function() {
+            //     document.write('组件调用' + '<br>')
+            // },
+            // methods: {
+            //     start: function() {
+            //         document.write('start 方法' + '<br>');
+            //     },
+            //     samemethod: function() {
+            //         document.write('Main：相同方法名' + '<br>');
+            //     }
+            // }
+        });
+        //vue示例和 混入中有相同的方法名时  调用测试
+        // vm.hellworld();
+        // vm.start();
+        // vm.samemethod();
+    </script>
+
+</body>
+
+</html>

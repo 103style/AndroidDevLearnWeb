@@ -47,6 +47,24 @@
             animation: bounce-in 2s reverse;
         }
         
+        .both-enter {
+            animation: bounce-in 2s;
+        }
+        
+        .both-leave-active {
+            animation: bounce-in 2s reverse;
+        }
+        
+        .both-enter-active,
+        .both-leave-active {
+            transition: opacity 2s
+        }
+        
+        .both-enter,
+        .both-leave-to {
+            opacity: 0
+        }
+        
         @keyframes bounce-in {
             0% {
                 transform: scale(0);
@@ -64,29 +82,95 @@
 <body>
 
     <div id="vue_anim">
-        <div class="item">
-            <center><button v-on:click="show = !show">点我触发淡入淡出的动画效果</button></center>
 
+
+        <div class="item">
+            <button v-on:click="showA = !showA">点我触发淡入淡出的动画效果A</button>
 
             <transition name="fade">
-                <p v-show="show" v-bind:style="styleobj">动画A</p>
+                <span v-show="showA" v-bind:style="styleobj">动画A</span>
             </transition>
-
-            <transition name="fade-css">
-                <p v-show="show" v-bind:style="styleobj">CSS过渡动画B</p>
-            </transition>
-
-            <transition name="anim">
-                <p v-show="show" v-bind:style="styleobj">CSS动画C</p>
-            </transition>
-
-
-            <transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
-                <p v-if="show" v-bind:style="styleobj">自定义过渡类名</p>
-            </transition>
-
         </div>
 
+        <div class="item">
+            <button v-on:click="showB = !showB">点我触发CSS过渡动画B</button>
+            <transition name="fade-css">
+                <span v-show="showB" v-bind:style="styleobj">CSS过渡动画B</span>
+            </transition>
+        </div>
+
+
+        <div class="item">
+            <button v-on:click="showC = !showC">点我触发CSS过渡动画C</button>
+
+            <transition name="anim">
+                <span v-show="showC" v-bind:style="styleobj" style="display: inline-block;">CSS动画C</span>
+            </transition>
+        </div>
+
+        <div class="item">
+            <button v-on:click="showD = !showD">点我触自定义过渡类名 动画</button>
+
+            <transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+                <span v-if="showD" v-bind:style="styleobj" style="display: inline-block;">自定义过渡类名</span>
+            </transition>
+        </div>
+
+
+        <div class="item">
+            <button v-on:click="showE = !showE">点我触发 同时使用过渡和动画效果</button>
+
+            <transition name="both">
+                <span v-if="showE" v-bind:style="styleobj" style="display: inline-block;">同时使用过渡和动画效果</span>
+            </transition>
+        </div>
+
+        <div class="item">
+            <button v-on:click="showF = !showF">在 transition 上添加 :duration 属性 显性的设置过渡持续时间</button>
+
+            <!-- <transition :duration="{ enter: 500, leave: 800 }">-->
+            <transition name="fade" :duration="5000">
+                <span v-if="showF" v-bind:style="styleobj" style="display: inline-block;">同时使用过渡和动画效果</span>
+            </transition>
+        </div>
+
+        <div class="item">
+            <button v-on:click="showG = !showG">测试 JavaScript 钩子</button>
+
+            <transition name="fade" v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:after-enter="afterEnter" v-on:enter-cancelled="enterCancelled" v-on:before-leave="beforeLeave" v-on:leave="leave" v-on:after-leave="afterLeave" v-on:leave-cancelled="leaveCancelled">
+                <span v-if="showG" v-bind:style="styleobj" style="display: inline-block;">同时使用过渡和动画效果</span>
+            </transition>
+
+            <p>{{state}}</p>
+        </div>
+
+
+
+        <div class="item">
+            <button v-on:click="showH = !showH">通过 appear 属性设置节点初始渲染的过渡</button>
+
+            <transition appear name="fade">
+                <span v-if="showH" v-bind:style="styleobj" style="display: inline-block;">设置了appear 属性初始渲染的过渡， 注意刷新时我的变化</span>
+            </transition>
+        </div>
+
+
+        <div class="item">
+            <button v-on:click="showI = !showI">过渡模式</button>
+
+            <div>
+                <p>在 on 按钮和 off 按钮的过渡中，两个按钮都被重绘了。这是 transition 的默认行为 - 进入和离开同时发生。</p>
+                <transition name="fade">
+                    <span v-if="showI" v-bind:style="styleobj" style="display: inline-block;">on</span>
+                </transition>
+
+                <transition name="fade">
+                    <span v-if="!showI" v-bind:style="styleobj" style="display: inline-block;">off</span>
+                </transition>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -95,13 +179,47 @@
             //DOM元素的id 匹配对应的元素
             el: "#vue_anim",
             data: {
-                show: true,
+                showA: true,
+                showB: true,
+                showC: true,
+                showD: true,
+                showE: true,
+                showF: true,
+                showG: true,
+                showH: true,
+                showI: true,
+                state: '状态',
                 styleobj: {
                     fontSize: '30px',
                     color: 'red',
-                    'text-align': 'center',
                 }
             },
+            methods: {
+                beforeEnter: function(el) {
+                    this.state = 'beforeEnter'
+                },
+                enter: function(el) {
+                    this.state = 'enter'
+                },
+                afterEnter: function(el) {
+                    this.state = 'afterEnter'
+                },
+                enterCancelled: function(el) {
+                    this.state = 'enterCancelled'
+                },
+                beforeLeave: function(el) {
+                    this.state = 'beforeLeave'
+                },
+                leave: function(el) {
+                    this.state = 'leave'
+                },
+                afterLeave: function(el) {
+                    this.state = 'afterLeave'
+                },
+                leaveCancelled: function(el) {
+                    this.state = 'leaveCancelled'
+                },
+            }
         });
     </script>
 
