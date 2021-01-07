@@ -1,0 +1,41 @@
+{
+    "name": "vue_webpack",
+    "version": "1.0.0",
+    "description": "https://www.imooc.com/learn/935 学习记录",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+        "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js"
+    },
+    "keywords": [
+        "vue",
+        "webpack"
+    ],
+    "author": "103style",
+    "license": "ISC",
+    "dependencies": {
+        "babel": "^6.23.0",
+        "cross-env": "^7.0.3",
+        "css-loader": "^5.0.1",
+        "file-loader": "^6.2.0",
+        "html-webpack-plugin": "^4.5.1",
+        "style-loader": "^2.0.0",
+        "stylus": "^0.54.8",
+        "stylus-loader": "^4.3.1",
+        "url-loader": "^4.1.1",
+        "vue": "^2.6.12",
+        "vue-loader": "^15.9.6",
+        "vue-template-compiler": "^2.6.12",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.1"
+    },
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.5",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-latest": "^6.24.1",
+        "webpack": "^5.11.1"
+    }
+}
