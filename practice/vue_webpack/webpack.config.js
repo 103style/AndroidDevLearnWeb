@@ -3,12 +3,11 @@ const HTMLPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const { config } = require('vue/types/umd')
 
 //package.json 中的 scripts 中配置的
 const isDev = process.env.NODE_ENV === 'development'
 
-const configss = {
+const config = {
     //或者在 package.json 的 scripts 中配置 webpack --mode=development
     //mode: 'development',
     target: 'web',
@@ -62,7 +61,7 @@ const configss = {
 if (isDev) {
     config.devServer = {
         port: 8081,
-        host: '0.0.0.0',
+        host: '127.0.0.1',
         overlay: {
             errors: true
         },
@@ -74,4 +73,4 @@ if (isDev) {
     }
 }
 
-module.exports = configss
+module.exports = config
