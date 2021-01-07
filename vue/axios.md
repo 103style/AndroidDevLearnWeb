@@ -26,7 +26,7 @@ npm install -g axios
 ## 示例代码
 * [服务端代码 server.js](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/js/server.js) --- 执行服务端代码：`node server.js`
  
-* [示例代码 vue_ajax.html](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/vue_ajax.html)
+* [示例代码 vue_ajax.html](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/html/vue_ajax.html)
 
 ---
 
@@ -182,7 +182,7 @@ const instance = axios.create({
 ---
 
 ## 响应结构
-> [示例代码 vue_ajax.html](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/vue_ajax.html)
+> [示例代码 vue_ajax.html](https://github.com/103style/AndroidDevLearnWeb/blob/master/vue/html/vue_ajax.html)
 ```
 {
   // `data` 由服务器提供的响应
