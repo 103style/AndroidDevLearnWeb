@@ -18,33 +18,29 @@ const config = {
     },
     module: {
         rules: [{
-                //配置.vue文件的loader
-                test: /\.vue$/, //检测的文件类型
-                loader: 'vue-loader',
-            },
-            {
-                test: /\.css$/i, //i表示大小写不敏感
-                use: ['style-loader',
-                    'css-loader',
-                ]
-            }, {
-                test: /\.styl$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'stylus-loader'
-                ]
-            }, {
-                test: /\.(gif|jpg|jpeg|png|svg)$/,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 1024, //文件大小小于1024 就将其变成 base64写到html中
-                        name: '[name]-aaa.[ext]'
-                    }
-                }]
-            }
-        ]
+            //配置.vue文件的loader
+            test: /\.vue$/, //检测的文件类型
+            loader: 'vue-loader',
+        }, {
+            test: /\.css$/i, //i表示大小写不敏感
+            use: ['style-loader', 'css-loader']
+        }, {
+            test: /\.styl$/,
+            use: [
+                'style-loader',
+                'css-loader',
+                'stylus-loader'
+            ]
+        }, {
+            test: /\.(gif|jpg|jpeg|png|svg)$/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 1024, //文件大小小于1024 就将其变成 base64写到html中
+                    name: '[name]-aaa.[ext]'
+                }
+            }]
+        }]
     },
     plugins: [
         new webpack.DefinePlugin({

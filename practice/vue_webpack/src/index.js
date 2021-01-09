@@ -1,9 +1,7 @@
 import Vue from 'vue'
 import App from './app.vue'
-import './assets/styles/test.css'
-import './assets/images/ic_clears.png'
-import './assets/styles/test-stylus.styl'
 
+import './assets/styles/global.styl'
 //创建div添加到body中
 const root = document.createElement('div')
 document.body.appendChild(root)
