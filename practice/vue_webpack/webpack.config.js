@@ -22,18 +22,17 @@ const config = {
                 test: /\.vue$/, //检测的文件类型
                 loader: 'vue-loader',
             },
+            // {
+            //     test: /\.styl$/,
+            //     use: [
+            //         'style-loader',
+            //         'css-loader',
+            //         'stylus-loader'
+            //     ]
+            // }, 
             {
                 test: /\.css$/i, //i表示大小写不敏感
-                use: ['style-loader',
-                    'css-loader',
-                ]
-            }, {
-                test: /\.styl$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'stylus-loader'
-                ]
+                use: ['style-loader', 'css-loader', 'vue-style-loader', ]
             }, {
                 test: /\.(gif|jpg|jpeg|png|svg)$/,
                 use: [{
@@ -47,13 +46,13 @@ const config = {
         ]
     },
     plugins: [
+        new VueLoaderPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: isDev ? '"development"' : '"production"'
             }
         }),
         new HTMLPlugin(),
-        new VueLoaderPlugin(),
     ]
 }
 
