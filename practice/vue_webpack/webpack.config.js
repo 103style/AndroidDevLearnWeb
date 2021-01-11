@@ -21,18 +21,16 @@ const config = {
                 //配置.vue文件的loader
                 test: /\.vue$/, //检测的文件类型
                 loader: 'vue-loader',
-            },
-            // {
-            //     test: /\.styl$/,
-            //     use: [
-            //         'style-loader',
-            //         'css-loader',
-            //         'stylus-loader'
-            //     ]
-            // }, 
-            {
+            },{
+                 test: /\.styl$/,
+                 use: [
+                     'style-loader',
+                     'css-loader',
+                     'stylus-loader'
+                 ]
+             }, {
                 test: /\.css$/i, //i表示大小写不敏感
-                use: ['style-loader', 'css-loader', 'vue-style-loader', ]
+                use: ['style-loader', 'css-loader' ]
             }, {
                 test: /\.(gif|jpg|jpeg|png|svg)$/,
                 use: [{
