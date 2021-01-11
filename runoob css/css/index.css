@@ -57,3 +57,7 @@ p.title {
     transform: skew(20deg, 40deg);
     transition: all 1s;
 }
+
+hr {
+    margin: 10px 0;
+}
