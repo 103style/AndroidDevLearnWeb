@@ -68,11 +68,11 @@ export default {
 }
 
 .left .clear {
-width   : 150px;
+    width: 150px;
 }
 
 .left {
-tex t-align: center;
+    text-align: center;
 }
 
 .clear {
