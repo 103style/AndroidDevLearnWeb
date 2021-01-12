@@ -1,6 +1,6 @@
 // 任务组件
 <template>
-    <div :class="['todo-item', todo.completed ? 'completed':'']">
+    <div :class="['todo-item', todo.completed ? 'completed' : '']">
         <input 
             type="checkbox"
             class="toggle"
@@ -29,7 +29,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
 .todo-item {
     position: relative;
     background-color: #fff;
@@ -38,7 +37,7 @@ export default {
 
     &:hover {
         .destory:after {
-            content: 'x';
+            content: 'x'
         }
     }
 

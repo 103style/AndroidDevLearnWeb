@@ -13,7 +13,7 @@ const config = {
     target: 'web',
     entry: path.join(__dirname, 'src/index.js'),
     output: {
-        filename: 'bundle.js',
+        filename: 'bundle.[hash:8].js',
         path: path.join(__dirname, 'dist'),
     },
     module: {

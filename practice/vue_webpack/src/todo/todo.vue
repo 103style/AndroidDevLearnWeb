@@ -8,9 +8,9 @@
             @keyup.enter="addTodo"
         >
         <item 
-            :todo="todo"
-            v-for="todo in todos"
+            v-for="todo in filteredTodos"
             :key="todo.id"
+            :todo="todo"
             @del="deleteTodo"
         />
 
@@ -34,12 +34,12 @@ export default {
     },
     methods:{
         addTodo(e){
-            this.addTodo.unshift({
+            this.todos.unshift({
                 id: id++,
                 content : e.target.value.trim(),
                 completed: false,
             })
-            t.target.value = ''
+            e.target.value = ''
         },
         deleteTodo(id){
             //删除 一个符合 todo.id === id 的节点
@@ -67,7 +67,7 @@ export default {
             //是否选中completed按钮
             const completed = this.filter === 'completed'
             //返回过滤之后的列表
-            this.todos.filter(todo => todo.completed === completed)
+            return this.todos.filter(todo => todo.completed === completed)
         }
     }
 }
