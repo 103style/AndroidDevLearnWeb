@@ -20,7 +20,10 @@
     "devDependencies": {
         "@babel/core": "^7.12.10",
         "autoprefixer": "^10.2.1",
+        "babel-helper-vue-jsx-merge-props": "^2.0.3",
         "babel-loader": "^8.2.2",
+        "babel-plugin-syntax-jsx": "^6.18.0",
+        "babel-plugin-transform-vue-jsx": "^3.7.0",
         "babel-preset-env": "^1.7.0",
         "cross-env": "^7.0.3",
         "css-loader": "^5.0.1",
